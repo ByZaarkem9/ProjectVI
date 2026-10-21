@@ -1,0 +1,5220 @@
+/* =====================================================
+
+   GTA VI — PAGE INFORMATIONS
+
+   Thème : sombre, rose néon, violet et cinématique
+
+   ===================================================== */
+
+/* ---------- VARIABLES & BASE ---------- */
+
+:root {
+
+    --infos-bg: #09070d;
+
+    --infos-bg-light: #110d18;
+
+    --infos-card: #15101d;
+
+    --infos-pink: #ff4fa3;
+
+    --infos-purple: #a855f7;
+
+    --infos-text: #f7f1fa;
+
+    --infos-muted: #aaa1b4;
+
+    --infos-border: rgba(255, 255, 255, 0.09);
+
+    --infos-gradient: linear-gradient(120deg, #ff4fa3, #a855f7);
+
+}
+
+html {
+
+    scroll-behavior: smooth;
+
+    scroll-padding-top: 100px;
+
+}
+
+body {
+
+    background: var(--infos-bg);
+
+    color: var(--infos-text);
+
+}
+
+body,
+
+button,
+
+a {
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+::selection {
+
+    background: var(--infos-pink);
+
+    color: white;
+
+}
+
+main {
+
+    overflow: hidden;
+
+}
+
+main section {
+
+    position: relative;
+
+}
+
+.infos-section,
+
+.gameplay-section,
+
+.duo-section,
+
+.vehicle-section,
+
+.music-section,
+
+.rumors-section,
+
+.sources-section {
+
+    padding: 100px 8%;
+
+}
+
+.section-tag {
+
+    display: inline-block;
+
+    margin-bottom: 17px;
+
+    color: var(--infos-pink);
+
+    font-size: 0.72rem;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+.section-heading {
+
+    max-width: 720px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+
+}
+
+.section-heading h2,
+
+.duo-heading h2,
+
+.vehicle-copy h2,
+
+.music-header h2,
+
+.sources-section h2 {
+
+    margin: 0 0 16px;
+
+    font-size: clamp(2rem, 4vw, 3.2rem);
+
+    line-height: 1.12;
+
+    letter-spacing: -1.5px;
+
+}
+
+.section-heading h2 span,
+
+.duo-heading h2 span,
+
+.vehicle-copy h2 span,
+
+.music-header h2 span,
+
+.sources-section h2 span {
+
+    color: var(--infos-pink);
+
+}
+
+.section-heading > p,
+
+.duo-heading > p,
+
+.vehicle-copy > p,
+
+.music-header > div > p,
+
+.sources-section > p {
+
+    color: var(--infos-muted);
+
+    font-size: 0.98rem;
+
+    line-height: 1.8;
+
+}
+
+.small-note,
+
+.source-note {
+
+    color: var(--infos-muted);
+
+    font-size: 0.82rem;
+
+    line-height: 1.7;
+
+    text-align: center;
+
+    margin-top: 25px;
+
+}
+
+/* =====================================================
+
+   NAVIGATION — CENTRAGE & ANIMATION NÉON
+
+   ===================================================== */
+
+header {
+
+    position: relative;
+
+    z-index: 1000;
+
+}
+
+header .navbar {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+}
+
+/* Logo à gauche */
+
+header .navbar .logo {
+
+    position: relative;
+
+    z-index: 2;
+
+    flex-shrink: 0;
+
+}
+
+/* Menu centré indépendamment de la largeur du logo */
+
+header .navbar .nav-links {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+}
+
+/* Suppression des marges qui peuvent décaler les liens */
+
+header .navbar .nav-links li {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+/* Apparence des liens */
+
+header .navbar .nav-links a {
+
+    position: relative;
+
+    display: inline-block;
+
+    padding: 10px 0;
+
+    color: #f7f1fa;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition: color 0.3s ease;
+
+}
+
+/* Trait néon animé */
+
+header .navbar .nav-links a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 2px;
+
+    width: 100%;
+
+    height: 2px;
+
+    background: linear-gradient(90deg, #ff4fa3, #a855f7);
+
+    box-shadow: 0 0 10px rgba(255, 79, 163, 0.55);
+
+    transform: scaleX(0);
+
+    transform-origin: center;
+
+    transition: transform 0.3s ease;
+
+}
+
+/* Survol */
+
+header .navbar .nav-links a:hover {
+
+    color: #ff78b8;
+
+}
+
+header .navbar .nav-links a:hover::after {
+
+    transform: scaleX(1);
+
+}
+
+/* Page active */
+
+header .navbar .nav-links a.active {
+
+    color: #ff78b8;
+
+}
+
+header .navbar .nav-links a.active::after {
+
+    transform: scaleX(1);
+
+}
+
+/* Navigation sur mobile */
+
+@media (max-width: 650px) {
+
+    header .navbar {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+
+    }
+
+    header .navbar .logo {
+
+        margin: 0 auto;
+
+    }
+
+    header .navbar .nav-links {
+
+        position: static;
+
+        top: auto;
+
+        left: auto;
+
+        transform: none;
+
+        width: 100%;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px 22px;
+
+    }
+
+}
+
+/* ---------- HERO ---------- */
+
+.infos-hero {
+
+    min-height: 660px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 100px 10% 85px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+
+        radial-gradient(
+
+            ellipse at 78% 38%,
+
+            rgba(168, 85, 247, 0.2),
+
+            transparent 40%
+
+        ),
+
+        radial-gradient(
+
+            ellipse at 72% 70%,
+
+            rgba(255, 79, 163, 0.13),
+
+            transparent 38%
+
+        ),
+
+        linear-gradient(135deg, #0b0810 5%, #140b1c 55%, #09070d 100%);
+
+}
+
+.infos-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    opacity: 0.16;
+
+    background-image:
+
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+
+    background-size: 55px 55px;
+
+    mask-image: linear-gradient(to right, transparent, black);
+
+}
+
+.infos-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -150px;
+
+    bottom: -300px;
+
+    width: 620px;
+
+    height: 620px;
+
+    border: 1px solid rgba(255, 79, 163, 0.18);
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0 0 0 45px rgba(255, 79, 163, 0.025),
+
+        0 0 0 95px rgba(168, 85, 247, 0.025);
+
+    z-index: -1;
+
+}
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 680px;
+
+    animation: infos-appear 0.9s ease both;
+
+}
+
+.hero-content h1 {
+
+    margin: 0 0 25px;
+
+    font-size: clamp(3.5rem, 8vw, 7rem);
+
+    font-weight: 950;
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+}
+
+.hero-content h1 span {
+
+    color: transparent;
+
+    background: var(--infos-gradient);
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    filter: drop-shadow(0 0 22px rgba(255, 79, 163, 0.16));
+
+}
+
+.hero-content > p {
+
+    max-width: 530px;
+
+    color: #c0b5c9;
+
+    font-size: 1.02rem;
+
+    line-height: 1.9;
+
+    margin-bottom: 32px;
+
+}
+
+.primary-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 24px;
+
+    padding: 15px 21px;
+
+    border: 1px solid rgba(255, 79, 163, 0.45);
+
+    border-radius: 5px;
+
+    color: white;
+
+    background: rgba(255, 79, 163, 0.09);
+
+    text-decoration: none;
+
+    font-size: 0.88rem;
+
+    font-weight: 750;
+
+    transition: 0.25s ease;
+
+}
+
+.primary-button span {
+
+    color: var(--infos-pink);
+
+    font-size: 1.1rem;
+
+}
+
+.primary-button:hover {
+
+    background: var(--infos-gradient);
+
+    border-color: transparent;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 35px rgba(255, 79, 163, 0.18);
+
+}
+
+.primary-button:hover span {
+
+    color: white;
+
+}
+
+.hero-decoration {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 9%;
+
+    width: min(38vw, 470px);
+
+    aspect-ratio: 1;
+
+    transform: translateY(-50%);
+
+    display: grid;
+
+    place-items: center;
+
+    pointer-events: none;
+
+}
+
+.hero-number {
+
+    font-size: clamp(12rem, 28vw, 25rem);
+
+    line-height: 1;
+
+    font-weight: 950;
+
+    letter-spacing: -18px;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255, 79, 163, 0.42);
+
+    text-shadow: 0 0 65px rgba(168, 85, 247, 0.1);
+
+    transform: skew(-8deg);
+
+}
+
+.hero-orbit {
+
+    position: absolute;
+
+    width: 88%;
+
+    height: 34%;
+
+    border: 1px solid rgba(168, 85, 247, 0.5);
+
+    border-radius: 50%;
+
+    transform: rotate(-35deg);
+
+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.08);
+
+}
+
+.hero-bottom {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 10%;
+
+    right: 10%;
+
+    min-height: 55px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-top: 1px solid var(--infos-border);
+
+    color: #9c8da6;
+
+    font-size: 0.67rem;
+
+    font-weight: 750;
+
+    letter-spacing: 2px;
+
+}
+
+/* ---------- INFORMATIONS ESSENTIELLES ---------- */
+
+.facts-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.info-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 30px;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 10px;
+
+    background: linear-gradient(145deg, #191220, #100c16);
+
+    transition: transform 0.3s ease, border-color 0.3s ease;
+
+}
+
+.info-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 30px;
+
+    width: 45px;
+
+    height: 2px;
+
+    background: var(--infos-gradient);
+
+    opacity: 0.9;
+
+}
+
+.info-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: rgba(255, 79, 163, 0.4);
+
+}
+
+.card-symbol {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 43px;
+
+    height: 43px;
+
+    margin-bottom: 28px;
+
+    border: 1px solid rgba(255, 79, 163, 0.22);
+
+    border-radius: 9px;
+
+    color: var(--infos-pink);
+
+    background: rgba(255, 79, 163, 0.07);
+
+    font-size: 1.4rem;
+
+}
+
+.card-label {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--infos-muted);
+
+    font-size: 0.67rem;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+
+}
+
+.fact-card h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 1.45rem;
+
+}
+
+.fact-card p {
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.9rem;
+
+    line-height: 1.8;
+
+}
+
+/* ---------- JASON & LUCIA ---------- */
+
+.duo-section {
+
+    background:
+
+        radial-gradient(ellipse at 0% 50%, rgba(168,85,247,0.08), transparent 45%),
+
+        #0d0a12;
+
+}
+
+.duo-heading {
+
+    max-width: 760px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+
+}
+
+.duo-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.duo-card {
+
+    min-height: 280px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding: 32px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 12px;
+
+    background: #17111f;
+
+    transition: border-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.duo-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(255, 79, 163, 0.38);
+
+}
+
+.jason-card {
+
+    background:
+
+        radial-gradient(ellipse at 75% 25%, rgba(168,85,247,0.22), transparent 45%),
+
+        linear-gradient(135deg, #1b1326, #100d17);
+
+}
+
+.lucia-card {
+
+    background:
+
+        radial-gradient(ellipse at 75% 25%, rgba(255,79,163,0.2), transparent 45%),
+
+        linear-gradient(135deg, #24121f, #100d17);
+
+}
+
+.duo-index {
+
+    position: absolute;
+
+    top: 24px;
+
+    left: 27px;
+
+    color: #b2a1bd;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+
+}
+
+.duo-initial {
+
+    position: absolute;
+
+    top: -48px;
+
+    right: 10px;
+
+    z-index: -1;
+
+    font-size: 18rem;
+
+    font-weight: 950;
+
+    line-height: 1;
+
+    color: rgba(255,255,255,0.035);
+
+    user-select: none;
+
+}
+
+.duo-details {
+
+    max-width: 390px;
+
+}
+
+.duo-details h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 2rem;
+
+}
+
+.duo-details p {
+
+    margin: 0;
+
+    color: #b9adbf;
+
+    font-size: 0.91rem;
+
+    line-height: 1.8;
+
+}
+
+/* ---------- RÉGIONS ---------- */
+
+.regions-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+}
+
+.region-card {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 22px;
+
+    min-height: 185px;
+
+    padding: 28px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 9px;
+
+    background: linear-gradient(120deg, #17111f, #100c15);
+
+    transition: border-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.region-card:hover {
+
+    transform: translateY(-3px);
+
+    border-color: rgba(168, 85, 247, 0.42);
+
+}
+
+.region-icon {
+
+    flex: 0 0 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 48px;
+
+    height: 48px;
+
+    border: 1px solid rgba(168, 85, 247, 0.25);
+
+    border-radius: 10px;
+
+    color: #c78bff;
+
+    background: rgba(168, 85, 247, 0.08);
+
+    font-size: 1.7rem;
+
+}
+
+.region-card h3 {
+
+    margin: 0 0 9px;
+
+    font-size: 1.45rem;
+
+}
+
+.region-card p {
+
+    max-width: 350px;
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.88rem;
+
+    line-height: 1.75;
+
+}
+
+.region-number {
+
+    position: absolute;
+
+    right: 20px;
+
+    bottom: 12px;
+
+    color: rgba(255,255,255,0.06);
+
+    font-size: 3.5rem;
+
+    font-weight: 900;
+
+}
+
+/* ---------- GAMEPLAY ---------- */
+
+.gameplay-section {
+
+    background:
+
+        radial-gradient(ellipse at 100% 10%, rgba(255,79,163,0.07), transparent 35%),
+
+        #0d0a12;
+
+}
+
+.gameplay-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.gameplay-card {
+
+    padding: 28px;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,0.018);
+
+    transition: background 0.3s ease, border-color 0.3s ease;
+
+}
+
+.gameplay-card:hover {
+
+    background: rgba(255,79,163,0.045);
+
+    border-color: rgba(255,79,163,0.3);
+
+}
+
+.gameplay-icon {
+
+    display: block;
+
+    margin-bottom: 25px;
+
+    color: var(--infos-pink);
+
+    font-size: 1.8rem;
+
+}
+
+.gameplay-card h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 1.2rem;
+
+}
+
+.gameplay-card p {
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.88rem;
+
+    line-height: 1.8;
+
+}
+
+/* ---------- ACTIVITÉS ---------- */
+
+.activities-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+}
+
+.activities-list span {
+
+    padding: 12px 17px;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 5px;
+
+    background: #15101c;
+
+    color: #d8cddd;
+
+    font-size: 0.86rem;
+
+    transition: border-color 0.25s ease, color 0.25s ease;
+
+}
+
+.activities-list span:hover {
+
+    border-color: rgba(255,79,163,0.55);
+
+    color: var(--infos-pink);
+
+}
+
+/* ---------- VÉHICULES & ATELIERS ---------- */
+
+.vehicle-section {
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+
+    gap: 70px;
+
+    align-items: center;
+
+    background:
+
+        radial-gradient(ellipse at 10% 50%, rgba(168,85,247,0.1), transparent 40%),
+
+        #100b16;
+
+}
+
+.vehicle-copy h2 {
+
+    font-size: clamp(2.7rem, 5vw, 4.4rem);
+
+}
+
+.vehicle-copy h2 span {
+
+    background: var(--infos-gradient);
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+}
+
+.workshop-list {
+
+    border-top: 1px solid var(--infos-border);
+
+}
+
+.workshop-item {
+
+    display: grid;
+
+    grid-template-columns: 40px 1fr 25px;
+
+    gap: 18px;
+
+    align-items: center;
+
+    padding: 24px 0;
+
+    border-bottom: 1px solid var(--infos-border);
+
+}
+
+.workshop-number {
+
+    color: var(--infos-pink);
+
+    font-size: 0.75rem;
+
+    font-weight: 800;
+
+}
+
+.workshop-item h3 {
+
+    margin: 0 0 7px;
+
+    font-size: 1.08rem;
+
+}
+
+.workshop-item p {
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.85rem;
+
+    line-height: 1.7;
+
+}
+
+.workshop-arrow {
+
+    color: #a994b7;
+
+    transition: color 0.25s ease, transform 0.25s ease;
+
+}
+
+.workshop-item:hover .workshop-arrow {
+
+    color: var(--infos-pink);
+
+    transform: translate(3px, -3px);
+
+}
+
+/* ---------- MUSIQUE & RADIOS ---------- */
+
+.music-section {
+
+    background:
+
+        radial-gradient(ellipse at 100% 0%, rgba(168,85,247,0.12), transparent 36%),
+
+        #0b0810;
+
+}
+
+.music-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 45px;
+
+    max-width: 1200px;
+
+    margin: 0 auto 45px;
+
+}
+
+.music-header > div:first-child {
+
+    max-width: 690px;
+
+}
+
+.music-disc {
+
+    flex: 0 0 155px;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 155px;
+
+    height: 155px;
+
+    border-radius: 50%;
+
+    background:
+
+        repeating-radial-gradient(
+
+            circle,
+
+            #17101e 0,
+
+            #17101e 3px,
+
+            #211528 4px,
+
+            #100c15 6px
+
+        );
+
+    border: 1px solid rgba(255,79,163,0.5);
+
+    box-shadow: 0 0 40px rgba(255,79,163,0.1);
+
+    animation: disc-turn 18s linear infinite;
+
+}
+
+.disc-center {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 50%;
+
+    background: var(--infos-gradient);
+
+    color: white;
+
+    font-weight: 950;
+
+    font-size: 0.85rem;
+
+    box-shadow: 0 0 20px rgba(255,79,163,0.2);
+
+}
+
+.radio-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.radio-card {
+
+    position: relative;
+
+    min-height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 27px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 9px;
+
+    background: linear-gradient(145deg, #18111f, #100c15);
+
+    transition: transform 0.3s ease, border-color 0.3s ease;
+
+}
+
+.radio-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -35px;
+
+    bottom: -55px;
+
+    width: 125px;
+
+    height: 125px;
+
+    border: 1px solid rgba(255,79,163,0.13);
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 17px rgba(255,79,163,0.025);
+
+    pointer-events: none;
+
+}
+
+.radio-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(255,79,163,0.4);
+
+}
+
+.radio-frequency {
+
+    margin-bottom: 25px;
+
+    color: var(--infos-pink);
+
+    font-size: 0.66rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+.radio-card h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 1.3rem;
+
+}
+
+.radio-card p {
+
+    flex: 1;
+
+    margin: 0 0 20px;
+
+    color: var(--infos-muted);
+
+    font-size: 0.85rem;
+
+    line-height: 1.8;
+
+}
+
+.radio-style {
+
+    display: inline-block;
+
+    padding: 7px 10px;
+
+    border-radius: 4px;
+
+    color: #d6bddf;
+
+    background: rgba(168,85,247,0.09);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.4px;
+
+}
+
+.radio-latin .radio-frequency {
+
+    color: #ff83bb;
+
+}
+
+.radio-country .radio-frequency {
+
+    color: #d2adff;
+
+}
+
+.radio-urban .radio-frequency {
+
+    color: #ff6d9e;
+
+}
+
+.radio-rock .radio-frequency {
+
+    color: #c18cff;
+
+}
+
+.radio-pop .radio-frequency {
+
+    color: #ff91d0;
+
+}
+
+.radio-afro .radio-frequency {
+
+    color: #d4a1ff;
+
+}
+
+.music-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 25px;
+
+    max-width: 1200px;
+
+    margin: 30px auto 0;
+
+    padding-top: 25px;
+
+    border-top: 1px solid var(--infos-border);
+
+}
+
+.music-footer p {
+
+    max-width: 750px;
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.86rem;
+
+    line-height: 1.8;
+
+}
+
+.text-link {
+
+    display: inline-block;
+
+    flex-shrink: 0;
+
+    color: var(--infos-pink);
+
+    text-decoration: none;
+
+    font-size: 0.86rem;
+
+    font-weight: 750;
+
+    transition: color 0.25s ease;
+
+}
+
+.text-link:hover {
+
+    color: #d6a4ff;
+
+}
+
+/* ---------- RUMEURS & HYPOTHÈSES ---------- */
+
+.rumors-section {
+
+    background:
+
+        radial-gradient(ellipse at 0% 30%, rgba(255,79,163,0.055), transparent 40%),
+
+        #100b15;
+
+}
+
+.rumor-list {
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    border-top: 1px solid var(--infos-border);
+
+}
+
+.rumor-item {
+
+    border-bottom: 1px solid var(--infos-border);
+
+}
+
+.rumor-item summary {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 23px 5px;
+
+    cursor: pointer;
+
+    list-style: none;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    transition: color 0.25s ease;
+
+}
+
+.rumor-item summary::-webkit-details-marker {
+
+    display: none;
+
+}
+
+.rumor-item summary:hover {
+
+    color: var(--infos-pink);
+
+}
+
+.details-plus {
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 50%;
+
+    color: var(--infos-pink);
+
+    font-size: 1.2rem;
+
+    transition: transform 0.25s ease;
+
+}
+
+.rumor-item[open] .details-plus {
+
+    transform: rotate(45deg);
+
+}
+
+.rumor-item > p {
+
+    max-width: 780px;
+
+    margin: -3px 0 25px;
+
+    padding-right: 45px;
+
+    color: var(--infos-muted);
+
+    font-size: 0.9rem;
+
+    line-height: 1.9;
+
+}
+
+/* ---------- SOURCES ---------- */
+
+.sources-section {
+
+    text-align: center;
+
+}
+
+.sources-section > p {
+
+    max-width: 620px;
+
+    margin: 0 auto 35px;
+
+}
+
+.sources-links {
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    text-align: left;
+
+}
+
+.sources-links a {
+
+    display: grid;
+
+    grid-template-columns: 45px 1fr 25px;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 22px 5px;
+
+    border-bottom: 1px solid var(--infos-border);
+
+    color: var(--infos-text);
+
+    text-decoration: none;
+
+    transition: padding 0.25s ease;
+
+}
+
+.sources-links a:first-child {
+
+    border-top: 1px solid var(--infos-border);
+
+}
+
+.sources-links a:hover {
+
+    padding-left: 12px;
+
+}
+
+.sources-links a > span:first-child {
+
+    color: var(--infos-pink);
+
+    font-size: 0.76rem;
+
+    font-weight: 800;
+
+}
+
+.sources-links strong,
+
+.sources-links small {
+
+    display: block;
+
+}
+
+.sources-links strong {
+
+    margin-bottom: 5px;
+
+    font-size: 0.96rem;
+
+}
+
+.sources-links small {
+
+    color: var(--infos-muted);
+
+    font-size: 0.78rem;
+
+}
+
+.source-arrow {
+
+    color: var(--infos-pink);
+
+    transition: transform 0.25s ease;
+
+}
+
+.sources-links a:hover .source-arrow {
+
+    transform: translate(3px, -3px);
+
+}
+
+/* ---------- PIED DE PAGE ---------- */
+
+.infos-footer {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 28px 8%;
+
+    border-top: 1px solid var(--infos-border);
+
+    background: #08060b;
+
+}
+
+.footer-logo {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 1.2rem;
+
+    font-weight: 950;
+
+    letter-spacing: 1px;
+
+}
+
+.footer-logo span {
+
+    color: var(--infos-pink);
+
+}
+
+.infos-footer p {
+
+    margin: 0;
+
+    color: #897e92;
+
+    font-size: 0.75rem;
+
+    line-height: 1.7;
+
+}
+
+.back-to-top {
+
+    color: #c4b2d0;
+
+    text-decoration: none;
+
+    font-size: 0.78rem;
+
+    transition: color 0.25s ease;
+
+}
+
+.back-to-top:hover {
+
+    color: var(--infos-pink);
+
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes infos-appear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(18px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+@keyframes disc-turn {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+/* ---------- TABLETTES ---------- */
+
+@media (max-width: 1000px) {
+
+    .infos-hero {
+
+        min-height: 590px;
+
+        padding-left: 7%;
+
+        padding-right: 7%;
+
+    }
+
+    .hero-decoration {
+
+        right: 2%;
+
+        opacity: 0.65;
+
+    }
+
+    .hero-content {
+
+        max-width: 600px;
+
+    }
+
+    .hero-content h1 {
+
+        font-size: clamp(3.4rem, 8vw, 6rem);
+
+    }
+
+    .infos-section,
+
+    .gameplay-section,
+
+    .duo-section,
+
+    .vehicle-section,
+
+    .music-section,
+
+    .rumors-section,
+
+    .sources-section {
+
+        padding: 80px 6%;
+
+    }
+
+    .facts-grid,
+
+    .radio-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+    .gameplay-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+    .vehicle-section {
+
+        gap: 40px;
+
+    }
+
+}
+
+/* ---------- MOBILES ---------- */
+
+@media (max-width: 650px) {
+
+    html {
+
+        scroll-padding-top: 75px;
+
+    }
+
+    .infos-hero {
+
+        min-height: 610px;
+
+        align-items: center;
+
+        padding: 85px 7% 95px;
+
+    }
+
+    .infos-hero::before {
+
+        background-size: 35px 35px;
+
+    }
+
+    .hero-content {
+
+        max-width: 100%;
+
+    }
+
+    .hero-content h1 {
+
+        font-size: clamp(3rem, 13vw, 5rem);
+
+        letter-spacing: -2px;
+
+    }
+
+    .hero-content > p {
+
+        max-width: 440px;
+
+        font-size: 0.92rem;
+
+    }
+
+    .hero-decoration {
+
+        top: 42%;
+
+        right: -23%;
+
+        width: 75vw;
+
+        opacity: 0.3;
+
+    }
+
+    .hero-number {
+
+        font-size: 65vw;
+
+        letter-spacing: -8px;
+
+    }
+
+    .hero-bottom {
+
+        left: 7%;
+
+        right: 7%;
+
+        min-height: 50px;
+
+        gap: 8px;
+
+        letter-spacing: 1px;
+
+        font-size: 0.52rem;
+
+    }
+
+    .infos-section,
+
+    .gameplay-section,
+
+    .duo-section,
+
+    .vehicle-section,
+
+    .music-section,
+
+    .rumors-section,
+
+    .sources-section {
+
+        padding: 65px 6%;
+
+    }
+
+    .section-tag {
+
+        font-size: 0.65rem;
+
+        letter-spacing: 2px;
+
+    }
+
+    .section-heading {
+
+        margin-bottom: 32px;
+
+    }
+
+    .section-heading h2,
+
+    .duo-heading h2,
+
+    .music-header h2,
+
+    .sources-section h2 {
+
+        font-size: 2rem;
+
+        letter-spacing: -0.8px;
+
+    }
+
+    .section-heading > p,
+
+    .duo-heading > p {
+
+        font-size: 0.88rem;
+
+    }
+
+    .facts-grid,
+
+    .duo-grid,
+
+    .regions-grid,
+
+    .gameplay-grid,
+
+    .radio-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 13px;
+
+    }
+
+    .info-card {
+
+        padding: 25px;
+
+    }
+
+    .card-symbol {
+
+        margin-bottom: 20px;
+
+    }
+
+    .duo-card {
+
+        min-height: 255px;
+
+        padding: 25px;
+
+    }
+
+    .duo-details h3 {
+
+        font-size: 1.7rem;
+
+    }
+
+    .duo-initial {
+
+        font-size: 15rem;
+
+    }
+
+    .region-card {
+
+        min-height: 155px;
+
+        padding: 22px;
+
+        gap: 15px;
+
+    }
+
+    .region-icon {
+
+        flex-basis: 42px;
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+    .region-card h3 {
+
+        font-size: 1.25rem;
+
+    }
+
+    .gameplay-card {
+
+        padding: 24px;
+
+    }
+
+    .gameplay-icon {
+
+        margin-bottom: 16px;
+
+    }
+
+    .activities-list {
+
+        justify-content: flex-start;
+
+        gap: 9px;
+
+    }
+
+    .activities-list span {
+
+        padding: 10px 12px;
+
+        font-size: 0.78rem;
+
+    }
+
+    .vehicle-section {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+    }
+
+    .vehicle-copy h2 {
+
+        font-size: 3rem;
+
+    }
+
+    .workshop-item {
+
+        grid-template-columns: 28px 1fr 18px;
+
+        gap: 12px;
+
+    }
+
+    .music-header {
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        margin-bottom: 30px;
+
+    }
+
+    .music-disc {
+
+        flex-basis: 72px;
+
+        width: 72px;
+
+        height: 72px;
+
+        margin-top: 25px;
+
+    }
+
+    .disc-center {
+
+        width: 28px;
+
+        height: 28px;
+
+        font-size: 0.65rem;
+
+    }
+
+    .music-header > div > p {
+
+        font-size: 0.85rem;
+
+        line-height: 1.7;
+
+    }
+
+    .radio-card {
+
+        min-height: 190px;
+
+        padding: 24px;
+
+    }
+
+    .music-footer {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 17px;
+
+    }
+
+    .rumor-item summary {
+
+        font-size: 0.9rem;
+
+        padding: 20px 0;
+
+    }
+
+    .rumor-item > p {
+
+        padding-right: 0;
+
+        font-size: 0.85rem;
+
+    }
+
+    .sources-links a {
+
+        grid-template-columns: 30px 1fr 20px;
+
+        gap: 12px;
+
+    }
+
+    .infos-footer {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 25px 6%;
+
+        gap: 13px;
+
+    }
+
+}
+
+/* =====================================================
+
+   GTA VI — PAGE INFORMATIONS
+
+   Thème : sombre, rose néon, violet et cinématique
+
+   ===================================================== */
+
+/* ---------- VARIABLES & BASE ---------- */
+
+:root {
+
+    --infos-bg: #09070d;
+
+    --infos-bg-light: #110d18;
+
+    --infos-card: #15101d;
+
+    --infos-pink: #ff4fa3;
+
+    --infos-purple: #a855f7;
+
+    --infos-text: #f7f1fa;
+
+    --infos-muted: #aaa1b4;
+
+    --infos-border: rgba(255, 255, 255, 0.09);
+
+    --infos-gradient: linear-gradient(120deg, #ff4fa3, #a855f7);
+
+}
+
+html {
+
+    scroll-behavior: smooth;
+
+    scroll-padding-top: 100px;
+
+}
+
+body {
+
+    background: var(--infos-bg);
+
+    color: var(--infos-text);
+
+}
+
+body,
+
+button,
+
+a {
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+::selection {
+
+    background: var(--infos-pink);
+
+    color: white;
+
+}
+
+main {
+
+    overflow: hidden;
+
+}
+
+main section {
+
+    position: relative;
+
+}
+
+.infos-section,
+
+.gameplay-section,
+
+.duo-section,
+
+.vehicle-section,
+
+.music-section,
+
+.rumors-section,
+
+.sources-section {
+
+    padding: 100px 8%;
+
+}
+
+.section-tag {
+
+    display: inline-block;
+
+    margin-bottom: 17px;
+
+    color: var(--infos-pink);
+
+    font-size: 0.72rem;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+.section-heading {
+
+    max-width: 720px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+
+}
+
+.section-heading h2,
+
+.duo-heading h2,
+
+.vehicle-copy h2,
+
+.music-header h2,
+
+.sources-section h2 {
+
+    margin: 0 0 16px;
+
+    font-size: clamp(2rem, 4vw, 3.2rem);
+
+    line-height: 1.12;
+
+    letter-spacing: -1.5px;
+
+}
+
+.section-heading h2 span,
+
+.duo-heading h2 span,
+
+.vehicle-copy h2 span,
+
+.music-header h2 span,
+
+.sources-section h2 span {
+
+    color: var(--infos-pink);
+
+}
+
+.section-heading > p,
+
+.duo-heading > p,
+
+.vehicle-copy > p,
+
+.music-header > div > p,
+
+.sources-section > p {
+
+    color: var(--infos-muted);
+
+    font-size: 0.98rem;
+
+    line-height: 1.8;
+
+}
+
+.small-note,
+
+.source-note {
+
+    color: var(--infos-muted);
+
+    font-size: 0.82rem;
+
+    line-height: 1.7;
+
+    text-align: center;
+
+    margin-top: 25px;
+
+}
+
+/* =====================================================
+
+   NAVIGATION — CENTRAGE & ANIMATION NÉON
+
+   ===================================================== */
+
+header {
+
+    position: relative;
+
+    z-index: 1000;
+
+}
+
+header .navbar {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+}
+
+/* Logo à gauche */
+
+header .navbar .logo {
+
+    position: relative;
+
+    z-index: 2;
+
+    flex-shrink: 0;
+
+}
+
+/* Menu centré indépendamment de la largeur du logo */
+
+header .navbar .nav-links {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 35px;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+}
+
+/* Suppression des marges qui peuvent décaler les liens */
+
+header .navbar .nav-links li {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+/* Apparence des liens */
+
+header .navbar .nav-links a {
+
+    position: relative;
+
+    display: inline-block;
+
+    padding: 10px 0;
+
+    color: #f7f1fa;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition: color 0.3s ease;
+
+}
+
+/* Trait néon animé */
+
+header .navbar .nav-links a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 2px;
+
+    width: 100%;
+
+    height: 2px;
+
+    background: linear-gradient(90deg, #ff4fa3, #a855f7);
+
+    box-shadow: 0 0 10px rgba(255, 79, 163, 0.55);
+
+    transform: scaleX(0);
+
+    transform-origin: center;
+
+    transition: transform 0.3s ease;
+
+}
+
+/* Survol */
+
+header .navbar .nav-links a:hover {
+
+    color: #ff78b8;
+
+}
+
+header .navbar .nav-links a:hover::after {
+
+    transform: scaleX(1);
+
+}
+
+/* Page active */
+
+header .navbar .nav-links a.active {
+
+    color: #ff78b8;
+
+}
+
+header .navbar .nav-links a.active::after {
+
+    transform: scaleX(1);
+
+}
+
+/* Navigation sur mobile */
+
+@media (max-width: 650px) {
+
+    header .navbar {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+
+    }
+
+    header .navbar .logo {
+
+        margin: 0 auto;
+
+    }
+
+    header .navbar .nav-links {
+
+        position: static;
+
+        top: auto;
+
+        left: auto;
+
+        transform: none;
+
+        width: 100%;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px 22px;
+
+    }
+
+}
+
+/* ---------- HERO ---------- */
+
+.infos-hero {
+
+    min-height: 660px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 100px 10% 85px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+
+        radial-gradient(
+
+            ellipse at 78% 38%,
+
+            rgba(168, 85, 247, 0.2),
+
+            transparent 40%
+
+        ),
+
+        radial-gradient(
+
+            ellipse at 72% 70%,
+
+            rgba(255, 79, 163, 0.13),
+
+            transparent 38%
+
+        ),
+
+        linear-gradient(135deg, #0b0810 5%, #140b1c 55%, #09070d 100%);
+
+}
+
+.infos-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    opacity: 0.16;
+
+    background-image:
+
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+
+    background-size: 55px 55px;
+
+    mask-image: linear-gradient(to right, transparent, black);
+
+}
+
+.infos-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -150px;
+
+    bottom: -300px;
+
+    width: 620px;
+
+    height: 620px;
+
+    border: 1px solid rgba(255, 79, 163, 0.18);
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0 0 0 45px rgba(255, 79, 163, 0.025),
+
+        0 0 0 95px rgba(168, 85, 247, 0.025);
+
+    z-index: -1;
+
+}
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 680px;
+
+    animation: infos-appear 0.9s ease both;
+
+}
+
+.hero-content h1 {
+
+    margin: 0 0 25px;
+
+    font-size: clamp(3.5rem, 8vw, 7rem);
+
+    font-weight: 950;
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+}
+
+.hero-content h1 span {
+
+    color: transparent;
+
+    background: var(--infos-gradient);
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    filter: drop-shadow(0 0 22px rgba(255, 79, 163, 0.16));
+
+}
+
+.hero-content > p {
+
+    max-width: 530px;
+
+    color: #c0b5c9;
+
+    font-size: 1.02rem;
+
+    line-height: 1.9;
+
+    margin-bottom: 32px;
+
+}
+
+.primary-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 24px;
+
+    padding: 15px 21px;
+
+    border: 1px solid rgba(255, 79, 163, 0.45);
+
+    border-radius: 5px;
+
+    color: white;
+
+    background: rgba(255, 79, 163, 0.09);
+
+    text-decoration: none;
+
+    font-size: 0.88rem;
+
+    font-weight: 750;
+
+    transition: 0.25s ease;
+
+}
+
+.primary-button span {
+
+    color: var(--infos-pink);
+
+    font-size: 1.1rem;
+
+}
+
+.primary-button:hover {
+
+    background: var(--infos-gradient);
+
+    border-color: transparent;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 35px rgba(255, 79, 163, 0.18);
+
+}
+
+.primary-button:hover span {
+
+    color: white;
+
+}
+
+.hero-decoration {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 9%;
+
+    width: min(38vw, 470px);
+
+    aspect-ratio: 1;
+
+    transform: translateY(-50%);
+
+    display: grid;
+
+    place-items: center;
+
+    pointer-events: none;
+
+}
+
+.hero-number {
+
+    font-size: clamp(12rem, 28vw, 25rem);
+
+    line-height: 1;
+
+    font-weight: 950;
+
+    letter-spacing: -18px;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(255, 79, 163, 0.42);
+
+    text-shadow: 0 0 65px rgba(168, 85, 247, 0.1);
+
+    transform: skew(-8deg);
+
+}
+
+.hero-orbit {
+
+    position: absolute;
+
+    width: 88%;
+
+    height: 34%;
+
+    border: 1px solid rgba(168, 85, 247, 0.5);
+
+    border-radius: 50%;
+
+    transform: rotate(-35deg);
+
+    box-shadow: 0 0 35px rgba(168, 85, 247, 0.08);
+
+}
+
+.hero-bottom {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 10%;
+
+    right: 10%;
+
+    min-height: 55px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border-top: 1px solid var(--infos-border);
+
+    color: #9c8da6;
+
+    font-size: 0.67rem;
+
+    font-weight: 750;
+
+    letter-spacing: 2px;
+
+}
+
+/* ---------- INFORMATIONS ESSENTIELLES ---------- */
+
+.facts-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.info-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 30px;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 10px;
+
+    background: linear-gradient(145deg, #191220, #100c16);
+
+    transition: transform 0.3s ease, border-color 0.3s ease;
+
+}
+
+.info-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 30px;
+
+    width: 45px;
+
+    height: 2px;
+
+    background: var(--infos-gradient);
+
+    opacity: 0.9;
+
+}
+
+.info-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: rgba(255, 79, 163, 0.4);
+
+}
+
+.card-symbol {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 43px;
+
+    height: 43px;
+
+    margin-bottom: 28px;
+
+    border: 1px solid rgba(255, 79, 163, 0.22);
+
+    border-radius: 9px;
+
+    color: var(--infos-pink);
+
+    background: rgba(255, 79, 163, 0.07);
+
+    font-size: 1.4rem;
+
+}
+
+.card-label {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--infos-muted);
+
+    font-size: 0.67rem;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+
+}
+
+.fact-card h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 1.45rem;
+
+}
+
+.fact-card p {
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.9rem;
+
+    line-height: 1.8;
+
+}
+
+/* ---------- JASON & LUCIA ---------- */
+
+.duo-section {
+
+    background:
+
+        radial-gradient(ellipse at 0% 50%, rgba(168,85,247,0.08), transparent 45%),
+
+        #0d0a12;
+
+}
+
+.duo-heading {
+
+    max-width: 760px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+
+}
+
+.duo-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.duo-card {
+
+    min-height: 280px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding: 32px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 12px;
+
+    background: #17111f;
+
+    transition: border-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.duo-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(255, 79, 163, 0.38);
+
+}
+
+.jason-card {
+
+    background:
+
+        radial-gradient(ellipse at 75% 25%, rgba(168,85,247,0.22), transparent 45%),
+
+        linear-gradient(135deg, #1b1326, #100d17);
+
+}
+
+.lucia-card {
+
+    background:
+
+        radial-gradient(ellipse at 75% 25%, rgba(255,79,163,0.2), transparent 45%),
+
+        linear-gradient(135deg, #24121f, #100d17);
+
+}
+
+.duo-index {
+
+    position: absolute;
+
+    top: 24px;
+
+    left: 27px;
+
+    color: #b2a1bd;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+
+}
+
+.duo-initial {
+
+    position: absolute;
+
+    top: -48px;
+
+    right: 10px;
+
+    z-index: -1;
+
+    font-size: 18rem;
+
+    font-weight: 950;
+
+    line-height: 1;
+
+    color: rgba(255,255,255,0.035);
+
+    user-select: none;
+
+}
+
+.duo-details {
+
+    max-width: 390px;
+
+}
+
+.duo-details h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 2rem;
+
+}
+
+.duo-details p {
+
+    margin: 0;
+
+    color: #b9adbf;
+
+    font-size: 0.91rem;
+
+    line-height: 1.8;
+
+}
+
+/* ---------- RÉGIONS ---------- */
+
+.regions-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+}
+
+.region-card {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 22px;
+
+    min-height: 185px;
+
+    padding: 28px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 9px;
+
+    background: linear-gradient(120deg, #17111f, #100c15);
+
+    transition: border-color 0.3s ease, transform 0.3s ease;
+
+}
+
+.region-card:hover {
+
+    transform: translateY(-3px);
+
+    border-color: rgba(168, 85, 247, 0.42);
+
+}
+
+.region-icon {
+
+    flex: 0 0 48px;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 48px;
+
+    height: 48px;
+
+    border: 1px solid rgba(168, 85, 247, 0.25);
+
+    border-radius: 10px;
+
+    color: #c78bff;
+
+    background: rgba(168, 85, 247, 0.08);
+
+    font-size: 1.7rem;
+
+}
+
+.region-card h3 {
+
+    margin: 0 0 9px;
+
+    font-size: 1.45rem;
+
+}
+
+.region-card p {
+
+    max-width: 350px;
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.88rem;
+
+    line-height: 1.75;
+
+}
+
+.region-number {
+
+    position: absolute;
+
+    right: 20px;
+
+    bottom: 12px;
+
+    color: rgba(255,255,255,0.06);
+
+    font-size: 3.5rem;
+
+    font-weight: 900;
+
+}
+
+/* ---------- GAMEPLAY ---------- */
+
+.gameplay-section {
+
+    background:
+
+        radial-gradient(ellipse at 100% 10%, rgba(255,79,163,0.07), transparent 35%),
+
+        #0d0a12;
+
+}
+
+.gameplay-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.gameplay-card {
+
+    padding: 28px;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 9px;
+
+    background: rgba(255,255,255,0.018);
+
+    transition: background 0.3s ease, border-color 0.3s ease;
+
+}
+
+.gameplay-card:hover {
+
+    background: rgba(255,79,163,0.045);
+
+    border-color: rgba(255,79,163,0.3);
+
+}
+
+.gameplay-icon {
+
+    display: block;
+
+    margin-bottom: 25px;
+
+    color: var(--infos-pink);
+
+    font-size: 1.8rem;
+
+}
+
+.gameplay-card h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 1.2rem;
+
+}
+
+.gameplay-card p {
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.88rem;
+
+    line-height: 1.8;
+
+}
+
+/* ---------- ACTIVITÉS ---------- */
+
+.activities-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+}
+
+.activities-list span {
+
+    padding: 12px 17px;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 5px;
+
+    background: #15101c;
+
+    color: #d8cddd;
+
+    font-size: 0.86rem;
+
+    transition: border-color 0.25s ease, color 0.25s ease;
+
+}
+
+.activities-list span:hover {
+
+    border-color: rgba(255,79,163,0.55);
+
+    color: var(--infos-pink);
+
+}
+
+/* ---------- VÉHICULES & ATELIERS ---------- */
+
+.vehicle-section {
+
+    display: grid;
+
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+
+    gap: 70px;
+
+    align-items: center;
+
+    background:
+
+        radial-gradient(ellipse at 10% 50%, rgba(168,85,247,0.1), transparent 40%),
+
+        #100b16;
+
+}
+
+.vehicle-copy h2 {
+
+    font-size: clamp(2.7rem, 5vw, 4.4rem);
+
+}
+
+.vehicle-copy h2 span {
+
+    background: var(--infos-gradient);
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+}
+
+.workshop-list {
+
+    border-top: 1px solid var(--infos-border);
+
+}
+
+.workshop-item {
+
+    display: grid;
+
+    grid-template-columns: 40px 1fr 25px;
+
+    gap: 18px;
+
+    align-items: center;
+
+    padding: 24px 0;
+
+    border-bottom: 1px solid var(--infos-border);
+
+}
+
+.workshop-number {
+
+    color: var(--infos-pink);
+
+    font-size: 0.75rem;
+
+    font-weight: 800;
+
+}
+
+.workshop-item h3 {
+
+    margin: 0 0 7px;
+
+    font-size: 1.08rem;
+
+}
+
+.workshop-item p {
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.85rem;
+
+    line-height: 1.7;
+
+}
+
+.workshop-arrow {
+
+    color: #a994b7;
+
+    transition: color 0.25s ease, transform 0.25s ease;
+
+}
+
+.workshop-item:hover .workshop-arrow {
+
+    color: var(--infos-pink);
+
+    transform: translate(3px, -3px);
+
+}
+
+/* ---------- MUSIQUE & RADIOS ---------- */
+
+.music-section {
+
+    background:
+
+        radial-gradient(ellipse at 100% 0%, rgba(168,85,247,0.12), transparent 36%),
+
+        #0b0810;
+
+}
+
+.music-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 45px;
+
+    max-width: 1200px;
+
+    margin: 0 auto 45px;
+
+}
+
+.music-header > div:first-child {
+
+    max-width: 690px;
+
+}
+
+.music-disc {
+
+    flex: 0 0 155px;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 155px;
+
+    height: 155px;
+
+    border-radius: 50%;
+
+    background:
+
+        repeating-radial-gradient(
+
+            circle,
+
+            #17101e 0,
+
+            #17101e 3px,
+
+            #211528 4px,
+
+            #100c15 6px
+
+        );
+
+    border: 1px solid rgba(255,79,163,0.5);
+
+    box-shadow: 0 0 40px rgba(255,79,163,0.1);
+
+    animation: disc-turn 18s linear infinite;
+
+}
+
+.disc-center {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 50%;
+
+    background: var(--infos-gradient);
+
+    color: white;
+
+    font-weight: 950;
+
+    font-size: 0.85rem;
+
+    box-shadow: 0 0 20px rgba(255,79,163,0.2);
+
+}
+
+.radio-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+.radio-card {
+
+    position: relative;
+
+    min-height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 27px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 9px;
+
+    background: linear-gradient(145deg, #18111f, #100c15);
+
+    transition: transform 0.3s ease, border-color 0.3s ease;
+
+}
+
+.radio-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -35px;
+
+    bottom: -55px;
+
+    width: 125px;
+
+    height: 125px;
+
+    border: 1px solid rgba(255,79,163,0.13);
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 17px rgba(255,79,163,0.025);
+
+    pointer-events: none;
+
+}
+
+.radio-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(255,79,163,0.4);
+
+}
+
+.radio-frequency {
+
+    margin-bottom: 25px;
+
+    color: var(--infos-pink);
+
+    font-size: 0.66rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+.radio-card h3 {
+
+    margin: 0 0 12px;
+
+    font-size: 1.3rem;
+
+}
+
+.radio-card p {
+
+    flex: 1;
+
+    margin: 0 0 20px;
+
+    color: var(--infos-muted);
+
+    font-size: 0.85rem;
+
+    line-height: 1.8;
+
+}
+
+.radio-style {
+
+    display: inline-block;
+
+    padding: 7px 10px;
+
+    border-radius: 4px;
+
+    color: #d6bddf;
+
+    background: rgba(168,85,247,0.09);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.4px;
+
+}
+
+.radio-latin .radio-frequency {
+
+    color: #ff83bb;
+
+}
+
+.radio-country .radio-frequency {
+
+    color: #d2adff;
+
+}
+
+.radio-urban .radio-frequency {
+
+    color: #ff6d9e;
+
+}
+
+.radio-rock .radio-frequency {
+
+    color: #c18cff;
+
+}
+
+.radio-pop .radio-frequency {
+
+    color: #ff91d0;
+
+}
+
+.radio-afro .radio-frequency {
+
+    color: #d4a1ff;
+
+}
+
+.music-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 25px;
+
+    max-width: 1200px;
+
+    margin: 30px auto 0;
+
+    padding-top: 25px;
+
+    border-top: 1px solid var(--infos-border);
+
+}
+
+.music-footer p {
+
+    max-width: 750px;
+
+    margin: 0;
+
+    color: var(--infos-muted);
+
+    font-size: 0.86rem;
+
+    line-height: 1.8;
+
+}
+
+.text-link {
+
+    display: inline-block;
+
+    flex-shrink: 0;
+
+    color: var(--infos-pink);
+
+    text-decoration: none;
+
+    font-size: 0.86rem;
+
+    font-weight: 750;
+
+    transition: color 0.25s ease;
+
+}
+
+.text-link:hover {
+
+    color: #d6a4ff;
+
+}
+
+/* ---------- RUMEURS & HYPOTHÈSES ---------- */
+
+.rumors-section {
+
+    background:
+
+        radial-gradient(ellipse at 0% 30%, rgba(255,79,163,0.055), transparent 40%),
+
+        #100b15;
+
+}
+
+.rumor-list {
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    border-top: 1px solid var(--infos-border);
+
+}
+
+.rumor-item {
+
+    border-bottom: 1px solid var(--infos-border);
+
+}
+
+.rumor-item summary {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 23px 5px;
+
+    cursor: pointer;
+
+    list-style: none;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    transition: color 0.25s ease;
+
+}
+
+.rumor-item summary::-webkit-details-marker {
+
+    display: none;
+
+}
+
+.rumor-item summary:hover {
+
+    color: var(--infos-pink);
+
+}
+
+.details-plus {
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    border: 1px solid var(--infos-border);
+
+    border-radius: 50%;
+
+    color: var(--infos-pink);
+
+    font-size: 1.2rem;
+
+    transition: transform 0.25s ease;
+
+}
+
+.rumor-item[open] .details-plus {
+
+    transform: rotate(45deg);
+
+}
+
+.rumor-item > p {
+
+    max-width: 780px;
+
+    margin: -3px 0 25px;
+
+    padding-right: 45px;
+
+    color: var(--infos-muted);
+
+    font-size: 0.9rem;
+
+    line-height: 1.9;
+
+}
+
+/* ---------- SOURCES ---------- */
+
+.sources-section {
+
+    text-align: center;
+
+}
+
+.sources-section > p {
+
+    max-width: 620px;
+
+    margin: 0 auto 35px;
+
+}
+
+.sources-links {
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    text-align: left;
+
+}
+
+.sources-links a {
+
+    display: grid;
+
+    grid-template-columns: 45px 1fr 25px;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 22px 5px;
+
+    border-bottom: 1px solid var(--infos-border);
+
+    color: var(--infos-text);
+
+    text-decoration: none;
+
+    transition: padding 0.25s ease;
+
+}
+
+.sources-links a:first-child {
+
+    border-top: 1px solid var(--infos-border);
+
+}
+
+.sources-links a:hover {
+
+    padding-left: 12px;
+
+}
+
+.sources-links a > span:first-child {
+
+    color: var(--infos-pink);
+
+    font-size: 0.76rem;
+
+    font-weight: 800;
+
+}
+
+.sources-links strong,
+
+.sources-links small {
+
+    display: block;
+
+}
+
+.sources-links strong {
+
+    margin-bottom: 5px;
+
+    font-size: 0.96rem;
+
+}
+
+.sources-links small {
+
+    color: var(--infos-muted);
+
+    font-size: 0.78rem;
+
+}
+
+.source-arrow {
+
+    color: var(--infos-pink);
+
+    transition: transform 0.25s ease;
+
+}
+
+.sources-links a:hover .source-arrow {
+
+    transform: translate(3px, -3px);
+
+}
+
+/* ---------- PIED DE PAGE ---------- */
+
+.infos-footer {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 28px 8%;
+
+    border-top: 1px solid var(--infos-border);
+
+    background: #08060b;
+
+}
+
+.footer-logo {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 1.2rem;
+
+    font-weight: 950;
+
+    letter-spacing: 1px;
+
+}
+
+.footer-logo span {
+
+    color: var(--infos-pink);
+
+}
+
+.infos-footer p {
+
+    margin: 0;
+
+    color: #897e92;
+
+    font-size: 0.75rem;
+
+    line-height: 1.7;
+
+}
+
+.back-to-top {
+
+    color: #c4b2d0;
+
+    text-decoration: none;
+
+    font-size: 0.78rem;
+
+    transition: color 0.25s ease;
+
+}
+
+.back-to-top:hover {
+
+    color: var(--infos-pink);
+
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes infos-appear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(18px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+@keyframes disc-turn {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+/* ---------- TABLETTES ---------- */
+
+@media (max-width: 1000px) {
+
+    .infos-hero {
+
+        min-height: 590px;
+
+        padding-left: 7%;
+
+        padding-right: 7%;
+
+    }
+
+    .hero-decoration {
+
+        right: 2%;
+
+        opacity: 0.65;
+
+    }
+
+    .hero-content {
+
+        max-width: 600px;
+
+    }
+
+    .hero-content h1 {
+
+        font-size: clamp(3.4rem, 8vw, 6rem);
+
+    }
+
+    .infos-section,
+
+    .gameplay-section,
+
+    .duo-section,
+
+    .vehicle-section,
+
+    .music-section,
+
+    .rumors-section,
+
+    .sources-section {
+
+        padding: 80px 6%;
+
+    }
+
+    .facts-grid,
+
+    .radio-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+    .gameplay-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+    .vehicle-section {
+
+        gap: 40px;
+
+    }
+
+}
+
+/* ---------- MOBILES ---------- */
+
+@media (max-width: 650px) {
+
+    html {
+
+        scroll-padding-top: 75px;
+
+    }
+
+    .infos-hero {
+
+        min-height: 610px;
+
+        align-items: center;
+
+        padding: 85px 7% 95px;
+
+    }
+
+    .infos-hero::before {
+
+        background-size: 35px 35px;
+
+    }
+
+    .hero-content {
+
+        max-width: 100%;
+
+    }
+
+    .hero-content h1 {
+
+        font-size: clamp(3rem, 13vw, 5rem);
+
+        letter-spacing: -2px;
+
+    }
+
+    .hero-content > p {
+
+        max-width: 440px;
+
+        font-size: 0.92rem;
+
+    }
+
+    .hero-decoration {
+
+        top: 42%;
+
+        right: -23%;
+
+        width: 75vw;
+
+        opacity: 0.3;
+
+    }
+
+    .hero-number {
+
+        font-size: 65vw;
+
+        letter-spacing: -8px;
+
+    }
+
+    .hero-bottom {
+
+        left: 7%;
+
+        right: 7%;
+
+        min-height: 50px;
+
+        gap: 8px;
+
+        letter-spacing: 1px;
+
+        font-size: 0.52rem;
+
+    }
+
+    .infos-section,
+
+    .gameplay-section,
+
+    .duo-section,
+
+    .vehicle-section,
+
+    .music-section,
+
+    .rumors-section,
+
+    .sources-section {
+
+        padding: 65px 6%;
+
+    }
+
+    .section-tag {
+
+        font-size: 0.65rem;
+
+        letter-spacing: 2px;
+
+    }
+
+    .section-heading {
+
+        margin-bottom: 32px;
+
+    }
+
+    .section-heading h2,
+
+    .duo-heading h2,
+
+    .music-header h2,
+
+    .sources-section h2 {
+
+        font-size: 2rem;
+
+        letter-spacing: -0.8px;
+
+    }
+
+    .section-heading > p,
+
+    .duo-heading > p {
+
+        font-size: 0.88rem;
+
+    }
+
+    .facts-grid,
+
+    .duo-grid,
+
+    .regions-grid,
+
+    .gameplay-grid,
+
+    .radio-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 13px;
+
+    }
+
+    .info-card {
+
+        padding: 25px;
+
+    }
+
+    .card-symbol {
+
+        margin-bottom: 20px;
+
+    }
+
+    .duo-card {
+
+        min-height: 255px;
+
+        padding: 25px;
+
+    }
+
+    .duo-details h3 {
+
+        font-size: 1.7rem;
+
+    }
+
+    .duo-initial {
+
+        font-size: 15rem;
+
+    }
+
+    .region-card {
+
+        min-height: 155px;
+
+        padding: 22px;
+
+        gap: 15px;
+
+    }
+
+    .region-icon {
+
+        flex-basis: 42px;
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+    .region-card h3 {
+
+        font-size: 1.25rem;
+
+    }
+
+    .gameplay-card {
+
+        padding: 24px;
+
+    }
+
+    .gameplay-icon {
+
+        margin-bottom: 16px;
+
+    }
+
+    .activities-list {
+
+        justify-content: flex-start;
+
+        gap: 9px;
+
+    }
+
+    .activities-list span {
+
+        padding: 10px 12px;
+
+        font-size: 0.78rem;
+
+    }
+
+    .vehicle-section {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+    }
+
+    .vehicle-copy h2 {
+
+        font-size: 3rem;
+
+    }
+
+    .workshop-item {
+
+        grid-template-columns: 28px 1fr 18px;
+
+        gap: 12px;
+
+    }
+
+    .music-header {
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        margin-bottom: 30px;
+
+    }
+
+    .music-disc {
+
+        flex-basis: 72px;
+
+        width: 72px;
+
+        height: 72px;
+
+        margin-top: 25px;
+
+    }
+
+    .disc-center {
+
+        width: 28px;
+
+        height: 28px;
+
+        font-size: 0.65rem;
+
+    }
+
+    .music-header > div > p {
+
+        font-size: 0.85rem;
+
+        line-height: 1.7;
+
+    }
+
+    .radio-card {
+
+        min-height: 190px;
+
+        padding: 24px;
+
+    }
+
+    .music-footer {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 17px;
+
+    }
+
+    .rumor-item summary {
+
+        font-size: 0.9rem;
+
+        padding: 20px 0;
+
+    }
+
+    .rumor-item > p {
+
+        padding-right: 0;
+
+        font-size: 0.85rem;
+
+    }
+
+    .sources-links a {
+
+        grid-template-columns: 30px 1fr 20px;
+
+        gap: 12px;
+
+    }
+
+    .infos-footer {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 25px 6%;
+
+        gap: 13px;
+
+    }
+
+}
+
+/* ---------- ACCESSIBILITÉ ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    \*,
+
+    \*::before,
+
+    \*::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}
+
+/* =====================================================
+   GTA VI — COULEURS QUI ÉVOLUENT AU FIL DE LA PAGE
+   Rose sunset -> violet -> bleu Vice City -> corail
+   Version plus visible, mais toujours élégante
+   ===================================================== */
+
+/* Ambiance générale : halos colorés dans toute la page */
+body {
+    background:
+        radial-gradient(ellipse at 12% 12%, rgba(255, 79, 163, 0.10), transparent 34%),
+        radial-gradient(ellipse at 88% 43%, rgba(76, 160, 204, 0.09), transparent 38%),
+        radial-gradient(ellipse at 45% 90%, rgba(240, 132, 104, 0.08), transparent 40%),
+        var(--infos-bg);
+}
+
+/* HAUT — coucher de soleil rose et violet */
+.infos-hero {
+    background:
+        radial-gradient(ellipse at 78% 34%, rgba(168, 85, 247, 0.30), transparent 43%),
+        radial-gradient(ellipse at 68% 72%, rgba(255, 79, 163, 0.23), transparent 42%),
+        linear-gradient(135deg, #160d20 0%, #211126 52%, #100b18 100%);
+}
+
+/* Informations essentielles — le rose laisse place au violet */
+.infos-section {
+    background:
+        radial-gradient(ellipse at 8% 18%, rgba(255, 79, 163, 0.12), transparent 42%),
+        radial-gradient(ellipse at 92% 85%, rgba(168, 85, 247, 0.15), transparent 45%),
+        linear-gradient(180deg, #100b17, #171020);
+}
+
+/* Personnages — violet plus profond */
+.duo-section {
+    background:
+        radial-gradient(ellipse at 0% 45%, rgba(168, 85, 247, 0.20), transparent 48%),
+        radial-gradient(ellipse at 100% 90%, rgba(255, 79, 163, 0.10), transparent 42%),
+        linear-gradient(180deg, #171020, #1b1023);
+}
+
+/* Régions — transition vers le bleu lagon de Vice City */
+.regions-grid .region-card {
+    background:
+        linear-gradient(125deg, rgba(60, 160, 190, 0.13), transparent 70%),
+        linear-gradient(120deg, #191522, #11121c);
+    border-color: rgba(115, 154, 205, 0.24);
+}
+
+.regions-grid .region-card:hover {
+    border-color: rgba(104, 211, 220, 0.58);
+    box-shadow: 0 8px 28px rgba(58, 170, 195, 0.08);
+}
+
+.region-icon {
+    color: #8bd5dc;
+    background: rgba(77, 184, 202, 0.12);
+    border-color: rgba(104, 211, 220, 0.30);
+}
+
+/* Gameplay — bleu nuit et turquoise */
+.gameplay-section {
+    background:
+        radial-gradient(ellipse at 100% 12%, rgba(76, 160, 204, 0.22), transparent 42%),
+        radial-gradient(ellipse at 0% 82%, rgba(168, 85, 247, 0.14), transparent 42%),
+        linear-gradient(180deg, #10121d, #0e1420);
+}
+
+.gameplay-card {
+    background: rgba(72, 125, 165, 0.055);
+}
+
+.gameplay-card:hover {
+    background: rgba(78, 174, 195, 0.12);
+    border-color: rgba(104, 211, 220, 0.46);
+    box-shadow: 0 8px 26px rgba(51, 156, 184, 0.08);
+}
+
+.gameplay-icon {
+    color: #e18ab8;
+}
+
+/* Activités — petits reflets cyan au survol */
+.activities-list span:hover {
+    border-color: rgba(104, 211, 220, 0.52);
+    color: #8bd5dc;
+}
+
+/* Véhicules — le bleu revient vers le violet et le corail */
+.vehicle-section {
+    background:
+        radial-gradient(ellipse at 10% 45%, rgba(168, 85, 247, 0.19), transparent 43%),
+        radial-gradient(ellipse at 95% 82%, rgba(255, 126, 91, 0.15), transparent 42%),
+        linear-gradient(135deg, #17101f, #19111b);
+}
+
+/* Musique — bleu profond, turquoise et reflets violets */
+.music-section {
+    background:
+        radial-gradient(ellipse at 100% 5%, rgba(105, 111, 225, 0.20), transparent 42%),
+        radial-gradient(ellipse at 0% 82%, rgba(62, 183, 194, 0.15), transparent 42%),
+        linear-gradient(180deg, #10111c, #0d121a);
+}
+
+.music-disc {
+    border-color: rgba(110, 205, 214, 0.52);
+    box-shadow: 0 0 36px rgba(74, 190, 204, 0.13);
+}
+
+.radio-style {
+    background: rgba(91, 164, 190, 0.12);
+    color: #b9e4e8;
+}
+
+.radio-card:hover {
+    border-color: rgba(104, 211, 220, 0.46);
+}
+
+/* Rumeurs — retour au rose chaud et au corail */
+.rumors-section {
+    background:
+        radial-gradient(ellipse at 0% 28%, rgba(255, 79, 163, 0.18), transparent 44%),
+        radial-gradient(ellipse at 100% 100%, rgba(240, 132, 104, 0.13), transparent 42%),
+        linear-gradient(180deg, #17101b, #1a1018);
+}
+
+/* Sources — dernière lueur rose/violette en bas de page */
+.sources-section {
+    background:
+        radial-gradient(ellipse at 50% 100%, rgba(195, 103, 160, 0.17), transparent 50%),
+        radial-gradient(ellipse at 85% 10%, rgba(168, 85, 247, 0.12), transparent 44%),
+        linear-gradient(180deg, #17101b, #100b15);
+}
+
+/* Titres et éléments interactifs : cohérence avec l'ambiance */
+.section-heading h2,
+.duo-heading h2,
+.vehicle-copy h2,
+.music-header h2,
+.sources-section h2 {
+    text-shadow: 0 0 24px rgba(255, 79, 163, 0.12);
+}
+
+.info-card,
+.duo-card,
+.region-card,
+.gameplay-card,
+.radio-card {
+    transition:
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s ease;
+}
+
+/* Accessibilité : respecte la préférence de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+    .info-card,
+    .duo-card,
+    .region-card,
+    .gameplay-card,
+    .radio-card {
+        transition: none;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE — AJUSTEMENTS COMPLÉMENTAIRES
+   Préserve le design existant et évite les débordements
+   ===================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img, video, iframe, svg {
+    max-width: 100%;
+}
+
+.infos-section,
+.gameplay-section,
+.duo-section,
+.vehicle-section,
+.music-section,
+.rumors-section,
+.sources-section,
+.infos-hero,
+.hero-content,
+.facts-grid,
+.duo-grid,
+.regions-grid,
+.gameplay-grid,
+.radio-grid,
+.workshop-list,
+.music-header,
+.music-footer,
+.sources-links {
+    min-width: 0;
+}
+
+.facts-grid > *,
+.duo-grid > *,
+.regions-grid > *,
+.gameplay-grid > *,
+.radio-grid > *,
+.vehicle-section > *,
+.workshop-item > *,
+.sources-links a > * {
+    min-width: 0;
+}
+
+p, h1, h2, h3, a, span {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 1000px) {
+    .hero-decoration {
+        max-width: 36vw;
+    }
+
+    .vehicle-section {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    }
+
+    .music-header {
+        gap: 28px;
+    }
+
+    .infos-footer {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+}
+
+@media (max-width: 760px) {
+    .infos-hero {
+        min-height: 560px;
+        padding-top: 80px;
+        padding-bottom: 85px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.8rem, 10vw, 4.8rem);
+        letter-spacing: -2px;
+        overflow-wrap: normal;
+    }
+
+    .hero-decoration {
+        right: -12%;
+        width: 58vw;
+        opacity: 0.25;
+    }
+
+    .hero-number {
+        font-size: clamp(9rem, 45vw, 18rem);
+        letter-spacing: -8px;
+    }
+
+    .hero-bottom {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 12px 0;
+    }
+
+    .infos-section,
+    .gameplay-section,
+    .duo-section,
+    .vehicle-section,
+    .music-section,
+    .rumors-section,
+    .sources-section {
+        padding: 65px 6%;
+    }
+
+    .facts-grid,
+    .duo-grid,
+    .regions-grid,
+    .gameplay-grid,
+    .radio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vehicle-section {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 30px;
+    }
+
+    .music-header {
+        align-items: flex-start;
+    }
+
+    .music-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .infos-footer {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 520px) {
+    .infos-hero {
+        min-height: 540px;
+        padding: 75px 6% 95px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.55rem, 12vw, 3.7rem);
+        line-height: 1;
+        letter-spacing: -1.5px;
+    }
+
+    .hero-content > p {
+        font-size: 0.9rem;
+        line-height: 1.75;
+    }
+
+    .hero-bottom {
+        left: 6%;
+        right: 6%;
+        justify-content: space-between;
+        gap: 8px;
+        letter-spacing: 0.5px;
+        font-size: 0.5rem;
+    }
+
+    .facts-grid,
+    .duo-grid,
+    .regions-grid,
+    .gameplay-grid,
+    .radio-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .info-card,
+    .duo-card,
+    .region-card,
+    .gameplay-card,
+    .radio-card {
+        padding: 22px;
+    }
+
+    .region-card {
+        gap: 13px;
+    }
+
+    .region-card > div {
+        min-width: 0;
+    }
+
+    .music-header {
+        gap: 12px;
+    }
+
+    .music-disc {
+        flex: 0 0 58px;
+        width: 58px;
+        height: 58px;
+    }
+
+    .disc-center {
+        width: 24px;
+        height: 24px;
+        font-size: 0.6rem;
+    }
+
+    .section-heading h2,
+    .duo-heading h2,
+    .music-header h2,
+    .sources-section h2 {
+        font-size: clamp(1.7rem, 8vw, 2rem);
+        letter-spacing: -0.6px;
+    }
+
+    .workshop-item {
+        grid-template-columns: 28px minmax(0, 1fr) 18px;
+        gap: 10px;
+    }
+
+    .sources-links a {
+        grid-template-columns: 28px minmax(0, 1fr) 18px;
+        gap: 10px;
+    }
+
+    .rumor-item summary {
+        gap: 12px;
+    }
+
+    .rumor-item > p {
+        padding-right: 0;
+    }
+
+    .infos-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 360px) {
+    .section-tag {
+        font-size: 0.58rem;
+        letter-spacing: 1.2px;
+    }
+
+    .hero-bottom span {
+        letter-spacing: 0;
+    }
+
+    .activities-list span {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .music-disc {
+        display: none;
+    }
+}
+
+@media (hover: none) {
+    .info-card:hover,
+    .duo-card:hover,
+    .region-card:hover,
+    .radio-card:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .hero-content,
+    .music-disc {
+        animation: none;
+    }
+}

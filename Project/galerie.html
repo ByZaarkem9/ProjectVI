@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Galerie GTA VI</title>
+
+    <link rel="stylesheet" href="accueil.css">
+    <link rel="stylesheet" href="galerie.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="Accueil.html" class="logo" aria-label="Accueil GTA VI">
+                <img src="images/VI.png" alt="GTA VI" class="logo-vi">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="Accueil.html">Accueil</a></li>
+                <li><a href="galerie.html" class="active" aria-current="page">Galerie</a></li>
+                <li><a href="infos.html">Infos</a></li>
+                <li><a href="propos.html">À propos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="gallery-hero">
+            <h1>GALERIE GTA VI</h1>
+            <p>Plonge dans l'univers de Vice City 🌴</p>
+        </section>
+
+        <section class="gallery-section">
+
+            <div class="gallery-heading">
+                <h2>Explore les images</h2>
+                <p>
+                    Retrouve les personnages, les paysages et l'ambiance de GTA VI.
+                </p>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+
+                <article class="gallery-card">
+                    <img src="images/im1.png"
+                         alt="Image GTA VI 1"
+                         loading="lazy">
+                </article>
+
+                <article class="gallery-card">
+                    <img src="images/im2.png"
+                         alt="Image GTA VI 2"
+                         loading="lazy">
+                </article>
+
+                <article class="gallery-card">
+                    <img src="images/im3.png"
+                         alt="Image GTA VI 3"
+                         loading="lazy">
+                </article>
+
+                <article class="gallery-card">
+                    <img src="images/im4.png"
+                         alt="Image GTA VI 4"
+                         loading="lazy">
+                </article>
+
+                <article class="gallery-card">
+                    <img src="images/im5.png"
+                         alt="Image GTA VI 5"
+                         loading="lazy">
+                </article>
+
+                <article class="gallery-card">
+                    <img src="images/im6.png"
+                         alt="Image GTA VI 6"
+                         loading="lazy">
+                </article>
+
+                <article class="gallery-card">
+                    <img src="images/im7.png"
+                         alt="Image GTA VI 7"
+                         loading="lazy">
+                </article>
+
+                <article class="gallery-card">
+                    <img src="images/im8.png"
+                         alt="Image GTA VI 8"
+                         loading="lazy">
+                </article>
+
+                <article class="gallery-card">
+                    <img src="images/im9.png"
+                         alt="Image GTA VI 9"
+                         loading="lazy">
+                </article>
+
+                <article class="gallery-card">
+                    <img src="images/im10.webp"
+                         alt="Image GTA VI 10"
+                         loading="lazy">
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="gallery-footer">
+        <p>GTA VI Fan Site — Site non officiel créé par des fans.</p>
+    </footer>
+
+    <!-- Fenêtre d'agrandissement des images -->
+    <dialog class="gallery-lightbox" id="galleryLightbox">
+
+        <img class="lightbox-image"
+             id="lightboxImage"
+             src=""
+             alt="Image GTA VI agrandie">
+
+        <div class="lightbox-bottom">
+            <h3 id="lightboxTitle">GTA VI</h3>
+
+            <button class="lightbox-close"
+                    id="lightboxClose"
+                    type="button">
+                Fermer ✕
+            </button>
+        </div>
+
+    </dialog>
+
+    <script>
+        const galleryCards = document.querySelectorAll(".gallery-card");
+
+        const lightbox = document.getElementById("galleryLightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxTitle = document.getElementById("lightboxTitle");
+        const lightboxClose = document.getElementById("lightboxClose");
+
+        // Ouvrir une image en grand
+        galleryCards.forEach((card, index) => {
+            card.addEventListener("click", () => {
+                const image = card.querySelector("img");
+
+                lightboxImage.src = image.src;
+                lightboxImage.alt = image.alt;
+
+                lightboxTitle.textContent = "GTA VI — Image " + (index + 1);
+
+                lightbox.showModal();
+            });
+        });
+
+        // Fermer avec le bouton
+        lightboxClose.addEventListener("click", () => {
+            lightbox.close();
+        });
+
+        // Fermer en cliquant à l'extérieur de l'image
+        lightbox.addEventListener("click", event => {
+            if (event.target === lightbox) {
+                lightbox.close();
+            }
+        });
+
+        // Fermer avec la touche Échap
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && lightbox.open) {
+                lightbox.close();
+            }
+        });
+    </script>
+
+</body>
+</html>

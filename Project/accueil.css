@@ -1,0 +1,3406 @@
+/* =========================================================
+
+   GTA VI COUNTDOWN — CINEMATIC DESIGN
+
+   CSS reconstruit proprement pour le HTML fourni
+
+   Palette : noir, rose néon, violet et coucher de soleil
+
+   ========================================================= */
+
+/* ---------- VARIABLES & RESET ---------- */
+
+:root {
+
+    --bg: #100816;
+
+    --bg-soft: #190d22;
+
+    --pink: #ff4fd8;
+
+    --pink-light: #ffd7f7;
+
+    --purple: #a855f7;
+
+    --white: #fffaff;
+
+    --muted: #d5c9dc;
+
+    --glass: rgba(20, 10, 30, .58);
+
+    --border: rgba(255, 255, 255, .16);
+
+    --radius: 18px;
+
+    --ease: cubic-bezier(.22, 1, .36, 1);
+
+    --content-width: 1120px;
+
+}
+
+\* {
+
+    box-sizing: border-box;
+
+}
+
+html {
+
+    scroll-behavior: smooth;
+
+    scroll-padding-top: 100px;
+
+}
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    background: var(--bg);
+
+    color: var(--white);
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+
+}
+
+body, button, a {
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+button, a {
+
+    font: inherit;
+
+}
+
+button {
+
+    color: inherit;
+
+}
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+button:focus-visible,
+
+a:focus-visible {
+
+    outline: 2px solid var(--pink-light);
+
+    outline-offset: 5px;
+
+}
+
+::selection {
+
+    background: var(--pink);
+
+    color: #17071c;
+
+}
+
+img {
+
+    max-width: 100%;
+
+}
+
+/* ---------- FOND CINÉMATIQUE ---------- */
+
+.background-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    background-color: #16091f;
+
+    background-image: url("./images/JasonXLucia.png");
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    animation: backgroundReveal 1.2s ease both;
+
+}
+
+.background-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(180deg,
+
+            rgba(12, 4, 20, .48) 0%,
+
+            rgba(12, 4, 20, .12) 34%,
+
+            rgba(12, 4, 20, .36) 65%,
+
+            rgba(5, 2, 10, .96) 100%);
+
+}
+
+.background-vignette {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: radial-gradient(ellipse at center, transparent 28%, rgba(5, 2, 10, .52) 100%);
+
+}
+
+@keyframes backgroundReveal {
+
+    from { opacity: 0; }
+
+    to { opacity: 1; }
+
+}
+
+@keyframes cinematicZoom {
+
+    from { transform: scale(1); }
+
+    to { transform: scale(1.075); }
+
+}
+
+/* ---------- NAVIGATION ---------- */
+
+.navbar {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: 100%;
+
+    min-height: 88px;
+
+    margin: 0;
+
+    padding: 16px 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 24px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .13);
+
+    background: linear-gradient(180deg, rgba(12, 5, 20, .78), rgba(12, 5, 20, .24));
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    animation: navReveal .8s var(--ease) both;
+
+}
+
+@keyframes navReveal {
+
+    from { opacity: 0; transform: translateY(-12px); }
+
+    to { opacity: 1; transform: translateY(0); }
+
+}
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 0 0 75px;
+
+    width: 75px;
+
+    height: 62px;
+
+    overflow: visible;
+
+    position: relative;
+
+    transition: transform .3s ease, filter .3s ease;
+
+}
+
+.logo:hover {
+
+    transform: rotate(-6deg) scale(1.07);
+
+    filter: drop-shadow(0 0 12px rgba(220, 100, 255, .55));
+
+}
+
+.logo-vi {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    opacity: 0.8;
+
+    filter: drop-shadow(0 0 3px rgba(255, 79, 216, 0.8));
+
+    transition:
+
+        opacity 0.3s ease,
+
+        filter 0.3s ease,
+
+        transform 0.3s ease;
+
+}
+
+.logo-vi:hover {
+
+    opacity: 1;
+
+    filter:
+
+        drop-shadow(0 0 2px #ff4fd8)
+
+        drop-shadow(0 0 6px rgba(255, 79, 216, 0.85))
+
+        drop-shadow(0 0 10px rgba(168, 85, 247, 0.7));
+
+    transform: scale(1.05);
+
+}
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: clamp(14px, 2.2vw, 32px);
+
+}
+
+.nav-link {
+
+    position: relative;
+
+    padding: 10px 0;
+
+    color: rgba(255, 250, 255, .76);
+
+    font-size: 12px;
+
+    font-weight: 750;
+
+    letter-spacing: 1.15px;
+
+    text-transform: uppercase;
+
+    transition: color .25s ease;
+
+}
+
+.nav-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 2px;
+
+    width: 100%;
+
+    height: 2px;
+
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+
+    box-shadow: 0 0 10px var(--pink);
+
+    transform: scaleX(0);
+
+    transform-origin: left;
+
+    transition: transform .3s var(--ease);
+
+}
+
+.nav-link:hover,
+
+.nav-link.active {
+
+    color: #fff;
+
+}
+
+.nav-link:hover::after,
+
+.nav-link.active::after {
+
+    transform: scaleX(1);
+
+}
+
+.nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+
+}
+
+.icon-button {
+
+    display: grid;
+
+    place-items: center;
+
+    flex: 0 0 39px;
+
+    width: 39px;
+
+    height: 39px;
+
+    padding: 0;
+
+    background: rgba(255, 255, 255, .055);
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    transition: background .25s ease, border-color .25s ease, transform .25s var(--ease);
+
+}
+
+.icon-button:hover {
+
+    background: rgba(255, 79, 216, .17);
+
+    border-color: var(--pink);
+
+    transform: translateY(-2px);
+
+}
+
+.change-background-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    min-height: 40px;
+
+    padding: 0 14px;
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .4px;
+
+    white-space: nowrap;
+
+    background: rgba(255, 79, 216, .11);
+
+    border: 1px solid rgba(255, 79, 216, .5);
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    transition: background .3s ease, box-shadow .3s ease, transform .3s var(--ease);
+
+}
+
+.change-background-button:hover {
+
+    background: rgba(255, 79, 216, .23);
+
+    box-shadow: 0 0 25px rgba(255, 79, 216, .2);
+
+    transform: translateY(-2px);
+
+}
+
+.shuffle-icon {
+
+    font-size: 20px;
+
+    color: var(--pink-light);
+
+    line-height: 1;
+
+}
+
+.mobile-menu-button {
+
+    display: none;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    background: rgba(255, 255, 255, .06);
+
+    cursor: pointer;
+
+}
+
+/* ---------- STRUCTURE GÉNÉRALE ---------- */
+
+main,
+
+.footer {
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+.hero,
+
+.trailers-section,
+
+.content-section {
+
+    isolation: isolate;
+
+}
+
+.trailers-section,
+
+.content-section {
+
+    width: min(var(--content-width), calc(100% - 48px));
+
+    margin-inline: auto;
+
+}
+
+.content-section {
+
+    padding: 95px 0;
+
+    text-align: center;
+
+    scroll-margin-top: 35px;
+
+}
+
+.content-section + .content-section {
+
+    border-top: 1px solid rgba(255, 255, 255, .09);
+
+}
+
+.content-section h2,
+
+.section-heading h2 {
+
+    margin: 12px 0 16px;
+
+    color: #ffffff;
+
+    font-size: clamp(30px, 4vw, 48px);
+
+    line-height: 1.1;
+
+    letter-spacing: -1.2px;
+
+    text-wrap: balance;
+
+    text-shadow: 0 3px 18px rgba(0, 0, 0, .95), 0 0 24px rgba(255, 79, 216, .22);
+
+}
+
+.content-section p,
+
+.section-heading p {
+
+    max-width: 700px;
+
+    margin: 0 auto 22px;
+
+    color: #f7edf9;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .98);
+
+}
+
+.section-eyebrow {
+
+    display: inline-block;
+
+    color: #ffb8f0;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 79, 216, .8);
+
+}
+
+/* ---------- HERO / ACCUEIL ---------- */
+
+.hero {
+
+    position: relative;
+
+    min-height: min(780px, calc(100svh - 88px));
+
+    padding: 58px 20px 82px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    scroll-margin-top: 20px;
+
+}
+
+.hero-content {
+
+    width: min(100%, 850px);
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+/* Logo image du titre */
+
+.gta-logo {
+
+    display: block;
+
+    width: min(560px, 82vw);
+
+    max-height: 300px;
+
+    height: auto;
+
+    object-fit: contain;
+
+    margin: 0 auto 12px;
+
+    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, .35));
+
+    animation: logoReveal .9s var(--ease) both;
+
+    transition: filter .35s ease, transform .35s ease;
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+.gta-logo:hover,
+
+.gta-logo:active,
+
+.gta-logo:focus-visible {
+
+    filter:
+
+        drop-shadow(0 0 1px #ff4fd8)
+
+        drop-shadow(0 0 3px rgba(255, 79, 216, .8))
+
+        drop-shadow(0 0 6px rgba(168, 85, 247, .55));
+
+    transform: scale(1.01);
+
+    transition: filter .25s ease, transform .25s ease;
+
+}
+
+@keyframes logoReveal {
+
+    from { opacity: 0; transform: translateY(14px) scale(.97); }
+
+    to { opacity: 1; transform: translateY(0) scale(1); }
+
+}
+
+.hero-subtitle {
+
+    margin: 12px 0 28px;
+
+    color: #ffd7f7;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: clamp(3px, .8vw, 7px);
+
+    line-height: 1.7;
+
+    text-shadow: 0 0 18px rgba(255, 79, 216, .6);
+
+    animation: fadeUp .8s .2s both;
+
+}
+
+/* Les éléments du compte à rebours restent centrés même si le HTML
+
+   place le logo dans son propre conteneur. */
+
+.countdown {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(95px, 130px));
+
+    justify-content: center;
+
+    gap: 13px;
+
+    width: fit-content;
+
+    max-width: 100%;
+
+    margin: 0 auto;
+
+    animation: fadeUp .9s .35s both;
+
+}
+
+.countdown-item {
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    min-height: 115px;
+
+    padding: 19px 12px 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 11px;
+
+    background: linear-gradient(145deg, rgba(32, 17, 43, .78), rgba(15, 8, 25, .72));
+
+    border: 1px solid rgba(255, 255, 255, .19);
+
+    border-radius: 15px;
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .2), inset 0 1px 0 rgba(255, 255, 255, .08);
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    transition: transform .3s var(--ease), border-color .3s ease, box-shadow .3s ease;
+
+}
+
+.countdown-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    inset: 0;
+
+    background: radial-gradient(circle at 50% 0%, rgba(255, 79, 216, .17), transparent 65%);
+
+    opacity: .8;
+
+}
+
+.countdown-item:hover {
+
+    transform: translateY(-5px);
+
+    border-color: rgba(255, 79, 216, .7);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .28), 0 0 25px rgba(255, 79, 216, .12);
+
+}
+
+.countdown-number {
+
+    color: #fff;
+
+    font-size: clamp(32px, 4vw, 43px);
+
+    font-weight: 850;
+
+    line-height: 1;
+
+    font-variant-numeric: tabular-nums;
+
+    letter-spacing: -1.5px;
+
+    text-shadow: 0 0 22px rgba(255, 79, 216, .2);
+
+}
+
+.countdown-label {
+
+    color: rgba(255, 250, 255, .68);
+
+    font-size: 10px;
+
+    font-weight: 750;
+
+    letter-spacing: 1.8px;
+
+    text-transform: uppercase;
+
+}
+
+.release-date {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin: 27px 0 25px;
+
+    animation: fadeUp .9s .45s both;
+
+}
+
+.release-caption {
+
+    color: rgba(255, 250, 255, .72);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+}
+
+.release-date time {
+
+    color: #fff;
+
+    font-size: clamp(14px, 2vw, 17px);
+
+    font-weight: 900;
+
+    letter-spacing: clamp(2px, .5vw, 4px);
+
+    text-shadow: 0 0 22px rgba(255, 79, 216, .35);
+
+}
+
+.primary-button,
+
+.secondary-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 11px;
+
+    min-height: 48px;
+
+    padding: 0 23px;
+
+    border-radius: 12px;
+
+    font-size: 11px;
+
+    font-weight: 850;
+
+    letter-spacing: 1.1px;
+
+    text-transform: uppercase;
+
+    transition: transform .25s var(--ease), box-shadow .25s ease, background .25s ease;
+
+}
+
+.primary-button {
+
+    color: #210b25;
+
+    background: linear-gradient(105deg, #ffb0eb, #ff4fd8 52%, #b77aff);
+
+    box-shadow: 0 8px 30px rgba(255, 79, 216, .22);
+
+    animation: fadeUp .9s .55s both;
+
+}
+
+.primary-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 12px 36px rgba(255, 79, 216, .36);
+
+}
+
+.play-icon {
+
+    font-size: 12px;
+
+}
+
+.secondary-button {
+
+    color: #fff;
+
+    background: rgba(255, 79, 216, .1);
+
+    border: 1px solid rgba(255, 79, 216, .48);
+
+}
+
+.secondary-button:hover {
+
+    transform: translateY(-3px);
+
+    background: rgba(255, 79, 216, .2);
+
+    box-shadow: 0 10px 30px rgba(255, 79, 216, .12);
+
+}
+
+@keyframes fadeUp {
+
+    from { opacity: 0; transform: translateY(14px); }
+
+    to { opacity: 1; transform: translateY(0); }
+
+}
+
+/* ---------- TRAILERS ---------- */
+
+.trailers-section {
+
+    padding: 85px 0 70px;
+
+    scroll-margin-top: 30px;
+
+    border-top: 1px solid rgba(255, 255, 255, .08);
+
+}
+
+.section-heading {
+
+    width: min(100%, 900px);
+
+    margin: 0 auto 35px;
+
+    padding: 28px 24px 24px;
+
+    text-align: center;
+
+    background: linear-gradient(135deg, rgba(12, 5, 20, .82), rgba(19, 7, 29, .72));
+
+    border: 1px solid rgba(255, 255, 255, .14);
+
+    border-radius: 18px;
+
+    box-shadow: 0 14px 45px rgba(0, 0, 0, .32), inset 0 1px 0 rgba(255, 255, 255, .06);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    backdrop-filter: blur(8px);
+
+}
+
+.trailers-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+}
+
+.trailer-card {
+
+    min-width: 0;
+
+}
+
+.trailer-thumbnail {
+
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    width: 100%;
+
+    min-height: 235px;
+
+    padding: 22px;
+
+    border: 1px solid rgba(255, 255, 255, .17);
+
+    border-radius: 17px;
+
+    background-color: #24112d;
+
+    background-position: center;
+
+    background-size: cover;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .2);
+
+    transition: transform .35s var(--ease), border-color .3s ease, box-shadow .3s ease;
+
+}
+
+.trailer-one {
+
+    background-image: url("./images/Trailer1.png");
+
+}
+
+.trailer-two {
+
+    background-image: url("./images/Trailer2.png");
+
+}
+
+.trailer-four {
+
+    background-image: url("./images/Trailer3.png");
+
+}
+
+.trailer-thumbnail::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background: linear-gradient(180deg, rgba(8, 3, 14, .03) 15%, rgba(8, 3, 14, .88) 100%);
+
+    transition: background .3s ease;
+
+}
+
+.trailer-thumbnail:hover {
+
+    transform: translateY(-5px);
+
+    border-color: rgba(255, 79, 216, .7);
+
+    box-shadow: 0 20px 42px rgba(0, 0, 0, .32), 0 0 24px rgba(255, 79, 216, .1);
+
+}
+
+.thumbnail-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background: linear-gradient(135deg, rgba(168, 85, 247, .08), transparent 55%);
+
+}
+
+.play-button {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 54px;
+
+    height: 54px;
+
+    padding-left: 3px;
+
+    border: 1px solid rgba(255, 255, 255, .65);
+
+    border-radius: 50%;
+
+    background: rgba(18, 7, 25, .58);
+
+    color: #fff;
+
+    font-size: 16px;
+
+    transform: translate(-50%, -50%);
+
+    backdrop-filter: blur(8px);
+
+    transition: transform .3s var(--ease), background .3s ease, box-shadow .3s ease;
+
+}
+
+.trailer-thumbnail:hover .play-button {
+
+    background: rgba(255, 79, 216, .85);
+
+    box-shadow: 0 0 30px rgba(255, 79, 216, .3);
+
+    transform: translate(-50%, -50%) scale(1.1);
+
+}
+
+.trailer-card-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    width: 100%;
+
+}
+
+.trailer-card-title {
+
+    color: #fff;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+
+}
+
+.trailer-card-action {
+
+    color: var(--pink-light);
+
+    font-size: 9px;
+
+    font-weight: 850;
+
+    letter-spacing: 2px;
+
+}
+
+.carousel-indicators {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 24px;
+
+}
+
+.carousel-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 99px;
+
+    background: rgba(255, 255, 255, .3);
+
+    cursor: pointer;
+
+    transition: width .25s ease, background .25s ease;
+
+}
+
+.carousel-dot.active,
+
+.carousel-dot[aria-current="true"] {
+
+    width: 25px;
+
+    background: var(--pink);
+
+    box-shadow: 0 0 12px rgba(255, 79, 216, .55);
+
+}
+
+/* ---------- GALERIE ---------- */
+
+#galerie {
+
+    scroll-margin-top: 30px;
+
+}
+
+.gallery-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 34px;
+
+}
+
+.gallery-item {
+
+    position: relative;
+
+    min-height: 230px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, .16);
+
+    border-radius: 16px;
+
+    background-color: #25112e;
+
+    background-position: center;
+
+    background-size: cover;
+
+    cursor: pointer;
+
+    transition: transform .35s var(--ease), border-color .3s ease, box-shadow .3s ease;
+
+}
+
+.gallery-item::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(180deg, transparent 45%, rgba(9, 3, 14, .38));
+
+    pointer-events: none;
+
+}
+
+.gallery-one {
+
+    background-image: url("./images/JasonXLucia.png");
+
+}
+
+.gallery-two {
+
+    background-image: url("./images/GTA6-2.png");
+
+    background-position: 30% center;
+
+}
+
+.gallery-three {
+
+    background-image: url("./images/GTA6-3.png");
+
+    background-position: 70% center;
+
+}
+
+.gallery-item:hover {
+
+    transform: translateY(-5px) scale(1.015);
+
+    border-color: var(--pink);
+
+    box-shadow: 0 12px 35px rgba(255, 79, 216, .13);
+
+}
+
+/* ---------- INFOS & À PROPOS ---------- */
+
+#infos,
+
+.about-section {
+
+    text-align: center;
+
+}
+
+#infos > p,
+
+.about-section > p {
+
+    max-width: 700px;
+
+}
+
+.disclaimer {
+
+    margin-top: 20px !important;
+
+    color: rgba(213, 201, 220, .65) !important;
+
+    font-size: 12px !important;
+
+}
+
+/* ---------- FENÊTRE VIDÉO ---------- */
+
+.video-modal {
+
+    width: min(1000px, calc(100% - 32px));
+
+    max-width: 1000px;
+
+    max-height: 90vh;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    color: #fff;
+
+    background: #100816;
+
+    border: 1px solid rgba(255, 79, 216, .45);
+
+    border-radius: 18px;
+
+    box-shadow: 0 25px 100px rgba(0, 0, 0, .65), 0 0 35px rgba(255, 79, 216, .1);
+
+}
+
+.video-modal::backdrop {
+
+    background: rgba(5, 2, 10, .84);
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+
+}
+
+.video-modal[open] {
+
+    animation: modalReveal .3s var(--ease) both;
+
+}
+
+@keyframes modalReveal {
+
+    from { opacity: 0; transform: translateY(10px) scale(.98); }
+
+    to { opacity: 1; transform: translateY(0) scale(1); }
+
+}
+
+.video-modal-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 17px 21px;
+
+    background: rgba(255, 255, 255, .035);
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.video-modal-header h2 {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+}
+
+.modal-close-button {
+
+    display: grid;
+
+    place-items: center;
+
+    flex: 0 0 37px;
+
+    width: 37px;
+
+    height: 37px;
+
+    background: rgba(255, 255, 255, .06);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: background .2s ease, transform .2s ease;
+
+}
+
+.modal-close-button:hover {
+
+    background: rgba(255, 79, 216, .2);
+
+    transform: rotate(90deg);
+
+}
+
+.video-container {
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    background: #050208;
+
+}
+
+.video-container iframe,
+
+.video-container video {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+}
+
+/* ---------- PIED DE PAGE ---------- */
+
+.footer {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 30px 20px 35px;
+
+    border-top: 1px solid rgba(255, 255, 255, .1);
+
+    background: rgba(8, 3, 13, .35);
+
+    text-align: center;
+
+}
+
+.rockstar-link {
+
+    color: #fff;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.7px;
+
+    transition: color .25s ease, text-shadow .25s ease;
+
+}
+
+.rockstar-link:hover {
+
+    color: var(--pink-light);
+
+    text-shadow: 0 0 15px rgba(255, 79, 216, .4);
+
+}
+
+.footer p {
+
+    margin: 0;
+
+    color: rgba(213, 201, 220, .6);
+
+    font-size: 11px;
+
+}
+
+/* ---------- TABLETTES ---------- */
+
+@media (max-width: 1050px) {
+
+    .navbar {
+
+        padding-inline: 22px;
+
+        gap: 16px;
+
+    }
+
+    .nav-links {
+
+        gap: 15px;
+
+    }
+
+    .nav-link {
+
+        font-size: 10px;
+
+        letter-spacing: .8px;
+
+    }
+
+    .change-background-button {
+
+        padding-inline: 10px;
+
+        font-size: 10px;
+
+    }
+
+    .trailer-thumbnail {
+
+        min-height: 205px;
+
+        padding: 18px;
+
+    }
+
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 760px) {
+
+    html {
+
+        scroll-padding-top: 75px;
+
+    }
+
+    .navbar {
+
+        min-height: 72px;
+
+        padding: 10px 16px;
+
+        gap: 10px;
+
+    }
+
+    .logo {
+
+        flex-basis: 58px;
+
+        width: 58px;
+
+        height: 50px;
+
+    }
+
+    .nav-actions {
+
+        margin-left: auto;
+
+        gap: 6px;
+
+    }
+
+    .icon-button {
+
+        flex-basis: 36px;
+
+        width: 36px;
+
+        height: 36px;
+
+    }
+
+    .change-background-button {
+
+        min-height: 36px;
+
+        gap: 6px;
+
+        padding-inline: 9px;
+
+        font-size: 0;
+
+    }
+
+    .shuffle-icon {
+
+        font-size: 19px;
+
+    }
+
+    .mobile-menu-button {
+
+        display: grid;
+
+        place-items: center;
+
+        flex: 0 0 40px;
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 19px;
+
+    }
+
+    .nav-links {
+
+        position: absolute;
+
+        top: calc(100% + 1px);
+
+        left: 12px;
+
+        right: 12px;
+
+        display: none;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 8px;
+
+        border: 1px solid var(--border);
+
+        border-radius: 14px;
+
+        background: rgba(15, 6, 23, .96);
+
+        box-shadow: 0 18px 45px rgba(0, 0, 0, .38);
+
+        backdrop-filter: blur(18px);
+
+    }
+
+    .navbar.menu-open .nav-links,
+
+    .navbar.menu-open .nav-links.is-open {
+
+        display: flex;
+
+        flex-direction: column;
+
+    }
+
+    .nav-link {
+
+        padding: 13px 12px;
+
+        font-size: 11px;
+
+    }
+
+    .nav-link::after {
+
+        right: auto;
+
+        bottom: 7px;
+
+        left: 12px;
+
+        width: 34px;
+
+    }
+
+    .hero {
+
+        min-height: auto;
+
+        padding: 70px 18px 78px;
+
+    }
+
+    .gta-logo {
+
+        width: min(500px, 88vw);
+
+        max-height: 230px;
+
+        margin-bottom: 8px;
+
+    }
+
+    .hero-subtitle {
+
+        margin: 10px 0 24px;
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+    }
+
+    .countdown {
+
+        width: min(100%, 430px);
+
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        gap: 7px;
+
+    }
+
+    .countdown-item {
+
+        min-width: 0;
+
+        min-height: 92px;
+
+        padding: 14px 5px 12px;
+
+        gap: 9px;
+
+        border-radius: 12px;
+
+    }
+
+    .countdown-number {
+
+        font-size: clamp(25px, 6vw, 34px);
+
+        letter-spacing: -1px;
+
+    }
+
+    .countdown-label {
+
+        font-size: 8px;
+
+        letter-spacing: .7px;
+
+    }
+
+    .release-date {
+
+        margin: 23px 0 22px;
+
+    }
+
+    .release-caption {
+
+        font-size: 9px;
+
+        letter-spacing: 1.4px;
+
+    }
+
+    .release-date time {
+
+        font-size: 13px;
+
+        letter-spacing: 2px;
+
+    }
+
+    .primary-button,
+
+    .secondary-button {
+
+        min-height: 45px;
+
+        padding-inline: 18px;
+
+        font-size: 10px;
+
+    }
+
+    .trailers-section,
+
+    .content-section {
+
+        width: min(100% - 32px, var(--content-width));
+
+    }
+
+    .trailers-section {
+
+        padding: 65px 0 55px;
+
+    }
+
+    .content-section {
+
+        padding: 70px 0;
+
+    }
+
+    .trailers-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+    }
+
+    .trailer-thumbnail {
+
+        min-height: 230px;
+
+    }
+
+    .gallery-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 13px;
+
+    }
+
+    .gallery-item {
+
+        min-height: 230px;
+
+    }
+
+    .section-heading h2,
+
+    .content-section h2 {
+
+        font-size: clamp(29px, 8vw, 39px);
+
+    }
+
+    .section-heading p,
+
+    .content-section p {
+
+        font-size: 14px;
+
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .navbar {
+
+        padding-inline: 11px;
+
+    }
+
+    .logo {
+
+        flex-basis: 48px;
+
+        width: 48px;
+
+        height: 45px;
+
+    }
+
+    .nav-actions {
+
+        gap: 5px;
+
+    }
+
+    .icon-button {
+
+        flex-basis: 32px;
+
+        width: 32px;
+
+        height: 32px;
+
+        font-size: 13px;
+
+    }
+
+    .mobile-menu-button {
+
+        flex-basis: 36px;
+
+        width: 36px;
+
+        height: 36px;
+
+    }
+
+    .hero {
+
+        padding-inline: 12px;
+
+    }
+
+    .countdown {
+
+        gap: 5px;
+
+    }
+
+    .countdown-item {
+
+        min-height: 82px;
+
+        padding-inline: 3px;
+
+    }
+
+    .countdown-number {
+
+        font-size: clamp(22px, 6.5vw, 28px);
+
+    }
+
+    .countdown-label {
+
+        font-size: 7px;
+
+        letter-spacing: .3px;
+
+    }
+
+    .hero-subtitle {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+    }
+
+    .trailer-thumbnail,
+
+    .gallery-item {
+
+        min-height: 195px;
+
+    }
+
+}
+
+/* ---------- ACCESSIBILITÉ ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    \*,
+
+    \*::before,
+
+    \*::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+
+    }
+
+}
+
+/* ========================================
+
+   CORRECTION NAVBAR — ACCUEIL GTA VI
+
+\\\\======================================== */
+
+header.navbar {
+
+    position: relative !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: space-between !important;
+
+    width: 100% !important;
+
+    box-sizing: border-box;
+
+}
+
+/* Logo à gauche */
+
+header.navbar > .logo {
+
+    position: absolute !important;
+
+    left: 30px !important;
+
+    top: 50% !important;
+
+    transform: translateY(-50%) !important;
+
+    z-index: 20;
+
+}
+
+/* Navigation centrée sur l'écran */
+
+header.navbar > nav.nav-links {
+
+    position: absolute !important;
+
+    left: 50% !important;
+
+    right: auto !important;
+
+    top: 50% !important;
+
+    transform: translate(-50%, -50%) !important;
+
+    display: flex !important;
+
+    justify-content: center !important;
+
+    align-items: center !important;
+
+    flex-wrap: nowrap !important;
+
+    gap: 35px !important;
+
+    width: max-content !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    z-index: 10;
+
+}
+
+/* Liens du menu */
+
+header.navbar > nav.nav-links > a.nav-link {
+
+    position: relative;
+
+    display: inline-block;
+
+    flex-shrink: 0;
+
+    white-space: nowrap;
+
+}
+
+/* Boutons à droite */
+
+header.navbar > .nav-actions {
+
+    position: absolute !important;
+
+    right: 30px !important;
+
+    top: 50% !important;
+
+    transform: translateY(-50%) !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 12px;
+
+    z-index: 20;
+
+}
+
+/* Mobile : conserver le menu replié jusqu'au clic sur le bouton */
+
+@media (max-width: 760px) {
+
+    header.navbar > .logo {
+
+        position: relative !important;
+
+        left: auto !important;
+
+        top: auto !important;
+
+        transform: none !important;
+
+    }
+
+    header.navbar > nav.nav-links {
+
+        position: absolute !important;
+
+        left: 12px !important;
+
+        right: 12px !important;
+
+        top: calc(100% + 1px) !important;
+
+        transform: none !important;
+
+        width: auto !important;
+
+        display: none !important;
+
+        flex-direction: column !important;
+
+        align-items: stretch !important;
+
+        gap: 0 !important;
+
+        padding: 8px !important;
+
+        background: rgba(15, 6, 23, .96);
+
+        border: 1px solid var(--border);
+
+        border-radius: 14px;
+
+        z-index: 30;
+
+    }
+
+    header.navbar.menu-open > nav.nav-links {
+
+        display: flex !important;
+
+    }
+
+    header.navbar > .mobile-menu-button {
+
+        display: grid;
+
+        place-items: center;
+
+        margin-left: auto;
+
+        position: relative;
+
+        z-index: 31;
+
+    }
+
+    header.navbar > nav.nav-links > a.nav-link {
+
+        display: block;
+
+        width: 100%;
+
+        white-space: nowrap;
+
+    }
+
+    header.navbar > .nav-actions {
+
+        position: static !important;
+
+        transform: none !important;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+    }
+
+}
+
+/* SECTION INFORMATIONS — AMÉLIORATION DE LA LISIBILITÉ */
+
+.content-section {
+
+    position: relative;
+
+    width: min(900px, calc(100% - 40px));
+
+    margin: 100px auto;
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    background: rgba(12, 8, 20, 0.78);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+
+}
+
+/* PETIT TITRE */
+
+.content-section .section-eyebrow {
+
+    display: inline-block;
+
+    margin-bottom: 16px;
+
+    color: #e9a6ff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+}
+
+/* GRAND TITRE */
+
+.content-section h2 {
+
+    margin: 0 0 20px;
+
+    color: #ffffff;
+
+    font-size: clamp(28px, 4vw, 44px);
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.6);
+
+}
+
+/* TEXTE DESCRIPTIF */
+
+.content-section p {
+
+    max-width: 650px;
+
+    margin: 0 auto 28px;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+}
+
+/* BOUTON DU SITE ROCKSTAR */
+
+.content-section .secondary-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 24px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 8px;
+
+    transition:
+
+        background 0.25s ease,
+
+        border-color 0.25s ease,
+
+        transform 0.25s ease;
+
+}
+
+.content-section .secondary-button:hover {
+
+    background: rgba(180, 90, 255, 0.2);
+
+    border-color: #d69aff;
+
+    transform: translateY(-2px);
+
+}
+
+/* ADAPTATION MOBILE */
+
+@media (max-width: 600px) {
+
+    .content-section {
+
+        width: calc(100% - 30px);
+
+        margin: 60px auto;
+
+        padding: 32px 22px;
+
+        border-radius: 16px;
+
+    }
+
+    .content-section .section-eyebrow {
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+
+    }
+
+    .content-section p {
+
+        font-size: 14px;
+
+        line-height: 1.8;
+
+    }
+
+}
+
+/* AFFICHER LES 3 TRAILERS SUR UNE LIGNE */
+
+.trailers-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+    width: 100%;
+
+}
+
+.trailer-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+}
+
+.trailer-thumbnail {
+
+    width: 100%;
+
+    min-width: 0;
+
+}
+
+/* TABLETTE : 2 COLONNES */
+
+@media (max-width: 900px) {
+
+    .trailers-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+/* MOBILE : 1 COLONNE */
+
+@media (max-width: 500px) {
+
+    .trailers-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+/* ---------- SYNCHRONISATION DES POINTS AU SURVOL DES TRAILERS ---------- */
+
+/* Par défaut, les points conservent leur état actif habituel.
+
+   Lorsqu'une carte est survolée, le point correspondant devient actif. */
+
+.trailers-section:has(.trailer-card:nth-child(1):hover) .carousel-dot,
+
+.trailers-section:has(.trailer-card:nth-child(1):focus-within) .carousel-dot,
+
+.trailers-section:has(.trailer-card:nth-child(2):hover) .carousel-dot,
+
+.trailers-section:has(.trailer-card:nth-child(2):focus-within) .carousel-dot,
+
+.trailers-section:has(.trailer-card:nth-child(3):hover) .carousel-dot,
+
+.trailers-section:has(.trailer-card:nth-child(3):focus-within) .carousel-dot,
+
+.trailers-section:has(.trailer-card:nth-child(4):hover) .carousel-dot,
+
+.trailers-section:has(.trailer-card:nth-child(4):focus-within) .carousel-dot {
+
+    width: 7px;
+
+    background: rgba(255, 255, 255, .3);
+
+    box-shadow: none;
+
+}
+
+.trailers-section:has(.trailer-card:nth-child(1):hover) .carousel-dot:nth-child(1),
+
+.trailers-section:has(.trailer-card:nth-child(1):focus-within) .carousel-dot:nth-child(1) {
+
+    width: 25px;
+
+    background: var(--pink);
+
+    box-shadow: 0 0 12px rgba(255, 79, 216, .55);
+
+}
+
+.trailers-section:has(.trailer-card:nth-child(2):hover) .carousel-dot:nth-child(2),
+
+.trailers-section:has(.trailer-card:nth-child(2):focus-within) .carousel-dot:nth-child(2) {
+
+    width: 25px;
+
+    background: var(--pink);
+
+    box-shadow: 0 0 12px rgba(255, 79, 216, .55);
+
+}
+
+.trailers-section:has(.trailer-card:nth-child(3):hover) .carousel-dot:nth-child(3),
+
+.trailers-section:has(.trailer-card:nth-child(3):focus-within) .carousel-dot:nth-child(3) {
+
+    width: 25px;
+
+    background: var(--pink);
+
+    box-shadow: 0 0 12px rgba(255, 79, 216, .55);
+
+}
+
+.trailers-section:has(.trailer-card:nth-child(4):hover) .carousel-dot:nth-child(4),
+
+.trailers-section:has(.trailer-card:nth-child(4):focus-within) .carousel-dot:nth-child(4) {
+
+    width: 25px;
+
+    background: var(--pink);
+
+    box-shadow: 0 0 12px rgba(255, 79, 216, .55);
+
+}
+
+/* ============================================
+
+   GTA VI — LECTEURS VIDÉO INTÉGRÉS AUX CARTES
+
+   ============================================ */
+
+/* Masquer la miniature lorsque la vidéo démarre */
+
+.trailer-thumbnail[hidden] {
+
+    display: none !important;
+
+}
+
+/* Bloc du lecteur vidéo */
+
+.trailer-player {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background: #050208;
+
+    border: 1px solid rgba(255, 79, 216, 0.65);
+
+    border-radius: 17px;
+
+    box-shadow:
+
+        0 15px 35px rgba(0, 0, 0, 0.3),
+
+        0 0 24px rgba(255, 79, 216, 0.12);
+
+    animation: inlinePlayerReveal 0.25s ease both;
+
+}
+
+/* Lecteur MP4 et lecteur YouTube */
+
+.trailer-player video,
+
+.trailer-player iframe {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    background: #050208;
+
+}
+
+/* Vidéo MP4 */
+
+.trailer-player video {
+
+    object-fit: contain;
+
+}
+
+/* Vidéo YouTube intégrée */
+
+.trailer-player iframe {
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+/* Bouton de fermeture en haut à droite */
+
+.inline-video-close {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 9px;
+
+    right: 9px;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    padding: 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    line-height: 1;
+
+    background: rgba(12, 4, 20, 0.88);
+
+    border: 1px solid rgba(255, 255, 255, 0.55);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+
+        background 0.2s ease,
+
+        transform 0.2s ease,
+
+        border-color 0.2s ease;
+
+}
+
+/* Effet au survol du bouton */
+
+.inline-video-close:hover {
+
+    background: rgba(255, 79, 216, 0.9);
+
+    border-color: #ffd7f7;
+
+    transform: scale(1.05);
+
+}
+
+/* Focus clavier */
+
+.inline-video-close:focus-visible {
+
+    outline: 2px solid #ffd7f7;
+
+    outline-offset: 3px;
+
+}
+
+/* Message en cas d'erreur de chargement */
+
+.video-load-error {
+
+    position: absolute;
+
+    z-index: 4;
+
+    inset: auto 10px 10px;
+
+    margin: 0;
+
+    padding: 9px 11px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    background: rgba(100, 15, 35, 0.92);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 8px;
+
+}
+
+/* Cacher le message lorsqu'il n'est pas nécessaire */
+
+.video-load-error[hidden] {
+
+    display: none !important;
+
+}
+
+/* Animation d'apparition du lecteur */
+
+@keyframes inlinePlayerReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* Adaptation pour tablettes */
+
+@media (max-width: 900px) {
+
+    .trailer-player {
+
+        border-radius: 15px;
+
+    }
+
+}
+
+/* Adaptation pour mobiles */
+
+@media (max-width: 500px) {
+
+    .trailer-player {
+
+        border-radius: 13px;
+
+    }
+
+    .inline-video-close {
+
+        top: 7px;
+
+        right: 7px;
+
+        width: 32px;
+
+        height: 32px;
+
+    }
+
+    .video-load-error {
+
+        font-size: 11px;
+
+        inset: auto 7px 7px;
+
+    }
+
+}
+
+/* Respect des préférences d'accessibilité */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .trailer-player {
+
+        animation: none;
+
+    }
+
+}
+
+/* =========================================================
+
+   CORRECTIONS FINALES — 3 TRAILERS ET LECTEURS INTÉGRÉS
+
+   ========================================================= */
+
+/* Trois trailers sur ordinateur */
+
+.trailers-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+    width: 100%;
+
+}
+
+.trailer-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    align-self: start;
+
+}
+
+/* Correspondance avec le HTML fourni */
+
+.trailer-one {
+
+    background-image: url("./images/Trailer1.png");
+
+}
+
+.trailer-two {
+
+    background-image: url("./images/Trailer2.png");
+
+}
+
+.trailer-four {
+
+    background-image: url("./images/Trailer3.png");
+
+}
+
+/* Masquer la miniature quand son lecteur est ouvert */
+
+.trailer-thumbnail[hidden] {
+
+    display: none !important;
+
+}
+
+/* Lecteur vidéo créé par rebours.js */
+
+.trailer-player {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    min-width: 0;
+
+    aspect-ratio: 16 / 9;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background: #050208;
+
+    border: 1px solid rgba(255, 79, 216, 0.65);
+
+    border-radius: 17px;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+
+                0 0 24px rgba(255, 79, 216, 0.12);
+
+    animation: inlinePlayerReveal 0.25s ease both;
+
+}
+
+.trailer-player video,
+
+.trailer-player iframe {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: 0;
+
+    background: #050208;
+
+}
+
+.trailer-player video {
+
+    object-fit: contain;
+
+}
+
+.trailer-player iframe {
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+/* Bouton de fermeture */
+
+.inline-video-close {
+
+    position: absolute;
+
+    z-index: 5;
+
+    top: 9px;
+
+    right: 9px;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    padding: 0;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    line-height: 1;
+
+    background: rgba(12, 4, 20, 0.88);
+
+    border: 1px solid rgba(255, 255, 255, 0.55);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    -webkit-backdrop-filter: blur(8px);
+
+    transition: background 0.2s ease,
+
+                transform 0.2s ease,
+
+                border-color 0.2s ease;
+
+}
+
+.inline-video-close:hover {
+
+    background: rgba(255, 79, 216, 0.9);
+
+    border-color: #ffd7f7;
+
+    transform: scale(1.05);
+
+}
+
+.inline-video-close:focus-visible {
+
+    outline: 2px solid #ffd7f7;
+
+    outline-offset: 3px;
+
+}
+
+/* Message d'erreur du lecteur */
+
+.video-load-error {
+
+    position: absolute;
+
+    z-index: 4;
+
+    inset: auto 10px 10px;
+
+    margin: 0;
+
+    padding: 9px 11px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    background: rgba(100, 15, 35, 0.92);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 8px;
+
+}
+
+.video-load-error[hidden] {
+
+    display: none !important;
+
+}
+
+@keyframes inlinePlayerReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* Tablettes */
+
+@media (max-width: 900px) {
+
+    .trailers-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+    .trailer-player {
+
+        border-radius: 15px;
+
+    }
+
+}
+
+/* Mobiles */
+
+@media (max-width: 760px) {
+
+    .trailers-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .trailer-player {
+
+        border-radius: 13px;
+
+    }
+
+    .inline-video-close {
+
+        top: 7px;
+
+        right: 7px;
+
+        width: 32px;
+
+        height: 32px;
+
+    }
+
+    .video-load-error {
+
+        inset: auto 7px 7px;
+
+        font-size: 11px;
+
+    }
+
+}
+
+/* Respecter les préférences d'accessibilité */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .trailer-player {
+
+        animation: none;
+
+    }
+
+}
+
+/* =========================================================
+
+   CORRECTION DES POINTS : RETOUR AU TRAILER 1 PAR DÉFAUT
+
+   Le point 2 ou 3 ne reste plus sélectionné après fermeture.
+
+   Le survol de la souris anime temporairement le point associé.
+
+   ========================================================= */
+
+.trailers-section .carousel-indicators .carousel-dot {
+
+    width: 7px !important;
+
+    background: rgba(255, 255, 255, .3) !important;
+
+    box-shadow: none !important;
+
+}
+
+/* État permanent par défaut : trailer 1 */
+
+.trailers-section .carousel-indicators .carousel-dot:first-child {
+
+    width: 25px !important;
+
+    background: var(--pink) !important;
+
+    box-shadow: 0 0 12px rgba(255, 79, 216, .55) !important;
+
+}
+
+/* Au survol uniquement, l'animation suit la carte survolée */
+
+.trailers-section:has(.trailer-card:nth-child(1):hover) .carousel-dot,
+
+.trailers-section:has(.trailer-card:nth-child(2):hover) .carousel-dot,
+
+.trailers-section:has(.trailer-card:nth-child(3):hover) .carousel-dot {
+
+    width: 7px !important;
+
+    background: rgba(255, 255, 255, .3) !important;
+
+    box-shadow: none !important;
+
+}
+
+.trailers-section:has(.trailer-card:nth-child(1):hover) .carousel-dot:nth-child(1),
+
+.trailers-section:has(.trailer-card:nth-child(2):hover) .carousel-dot:nth-child(2),
+
+.trailers-section:has(.trailer-card:nth-child(3):hover) .carousel-dot:nth-child(3) {
+
+    width: 25px !important;
+
+    background: var(--pink) !important;
+
+    box-shadow: 0 0 12px rgba(255, 79, 216, .55) !important;
+
+}
+
+
+
+/* =========================================================
+   OPTIMISATION RESPONSIVE COMPLÉMENTAIRE
+   Ajustements de disposition uniquement sur petits écrans.
+   ========================================================= */
+
+/* Évite les débordements sur les petits appareils */
+html {
+    max-width: 100%;
+}
+
+body {
+    width: 100%;
+    min-width: 0;
+}
+
+.hero,
+.trailers-section,
+.content-section,
+.footer,
+.section-heading,
+.trailers-grid,
+.trailer-card,
+.trailer-thumbnail,
+.trailer-player {
+    min-width: 0;
+    max-width: 100%;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+/* Tablettes et petites fenêtres : navigation et grilles plus souples */
+@media (max-width: 900px) {
+    .navbar {
+        padding-inline: 20px;
+        gap: 16px;
+    }
+
+    .nav-links {
+        gap: clamp(10px, 1.8vw, 18px);
+    }
+
+    .nav-link {
+        font-size: clamp(10px, 1.25vw, 12px);
+        letter-spacing: .5px;
+    }
+
+    .hero {
+        padding-inline: 24px;
+    }
+
+    .countdown {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: min(100%, 520px);
+    }
+
+    .countdown-item {
+        min-width: 0;
+    }
+
+    .trailers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .trailer-thumbnail {
+        min-height: clamp(180px, 27vw, 235px);
+    }
+}
+
+/* Téléphones */
+@media (max-width: 760px) {
+    .navbar {
+        min-height: 72px;
+        padding: 10px 16px;
+    }
+
+    .nav-links {
+        max-width: calc(100vw - 24px);
+    }
+
+    .hero {
+        min-height: auto;
+        padding: clamp(42px, 9vw, 70px) 16px 64px;
+    }
+
+    .gta-logo {
+        width: min(100%, 500px);
+        max-height: 34vh;
+    }
+
+    .hero-subtitle {
+        max-width: 100%;
+        font-size: clamp(9px, 2.5vw, 11px);
+        letter-spacing: clamp(1.5px, .7vw, 3px);
+    }
+
+    .countdown {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: min(100%, 430px);
+        gap: clamp(5px, 1.6vw, 8px);
+    }
+
+    .countdown-item {
+        min-height: clamp(76px, 18vw, 92px);
+        padding: 12px 4px;
+        gap: 8px;
+    }
+
+    .countdown-number {
+        font-size: clamp(21px, 6vw, 34px);
+        letter-spacing: -1px;
+    }
+
+    .countdown-label {
+        font-size: clamp(7px, 1.8vw, 9px);
+        letter-spacing: .4px;
+    }
+
+    .release-date time {
+        font-size: clamp(12px, 3.3vw, 15px);
+        letter-spacing: clamp(1px, .5vw, 2px);
+    }
+
+    .trailers-section,
+    .content-section {
+        width: calc(100% - 30px);
+    }
+
+    .trailers-section {
+        padding: 55px 0 45px;
+    }
+
+    .section-heading {
+        padding: clamp(20px, 5vw, 28px) clamp(14px, 4vw, 24px);
+        margin-bottom: 24px;
+    }
+
+    .section-eyebrow {
+        letter-spacing: clamp(1.5px, .8vw, 4px);
+        overflow-wrap: anywhere;
+    }
+
+    .section-heading h2,
+    .content-section h2 {
+        font-size: clamp(26px, 7vw, 39px);
+        letter-spacing: -.5px;
+        overflow-wrap: anywhere;
+    }
+
+    .section-heading p,
+    .content-section p {
+        font-size: clamp(13px, 3.6vw, 15px);
+        line-height: 1.7;
+    }
+
+    .trailers-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .trailer-thumbnail {
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+        padding: clamp(14px, 4vw, 22px);
+    }
+
+    .trailer-player {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    .content-section {
+        margin-block: 55px;
+        padding: clamp(28px, 7vw, 45px) clamp(16px, 5vw, 35px);
+    }
+
+    .primary-button,
+    .secondary-button {
+        max-width: 100%;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .footer {
+        padding-inline: 16px;
+    }
+}
+
+/* Très petits téléphones */
+@media (max-width: 380px) {
+    .navbar {
+        padding-inline: 10px;
+    }
+
+    .logo {
+        flex-basis: 44px;
+        width: 44px;
+        height: 42px;
+    }
+
+    .mobile-menu-button {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .countdown {
+        gap: 4px;
+    }
+
+    .countdown-item {
+        padding-inline: 2px;
+    }
+
+    .countdown-number {
+        font-size: clamp(19px, 6vw, 24px);
+    }
+
+    .countdown-label {
+        font-size: 7px;
+        letter-spacing: 0;
+    }
+
+    .trailer-card-title {
+        font-size: 13px;
+    }
+}
+
+/* Réduire les effets de survol sur les appareils tactiles */
+@media (hover: none) and (pointer: coarse) {
+    .countdown-item:hover,
+    .trailer-thumbnail:hover,
+    .primary-button:hover,
+    .secondary-button:hover {
+        transform: none;
+    }
+}
